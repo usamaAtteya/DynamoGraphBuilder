@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept Map</title>
+<meta name="description" content="A concept map diagram implemented with labeled links and ForceDirectedLayout." />
+<!-- Copyright 1998-2017 by Northwoods Software Corporation. -->
+<meta charset="UTF-8">
+<script src="jquery-3.2.1.min.js"></script>
+<script src="go.js"></script>
+<script src="bpopup.js"></script>
+ <!-- this is only for the GoJS Samples framework -->
+<script id="code">
+var graphElmnts = JSON.parse('[{"Id":335807,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405000000000001","DirectConnectedElementsIds":[341723,341534,341952,341100],"NonSupportingDirectElementsIds":[341534,341952,341100],"DirectSupportedElementsIds":[341534,341100],"DirectConnectedStructuralElementsIds":[341723,341534,341952,341100],"NonDirectDependentElementsIds":[341592,341588,341584,343946,343927,343884,341586,341582],"AllDependentElementsIds":[341592,341588,341584,343946,343927,343884,341586,341582,341534,341100]},{"Id":335985,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405000000000001","DirectConnectedElementsIds":[341725,341536,341952,341100],"NonSupportingDirectElementsIds":[341536,341952,341100],"DirectSupportedElementsIds":[341536,341100],"DirectConnectedStructuralElementsIds":[341725,341536,341952,341100],"NonDirectDependentElementsIds":[341592,341588,341584,343946,343927,343884,341586,341582],"AllDependentElementsIds":[341592,341588,341584,343946,343927,343884,341586,341582,341536,341100]},{"Id":336172,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[341727,341538,341952,341100],"NonSupportingDirectElementsIds":[341538,341952,341100],"DirectSupportedElementsIds":[341538,341100],"DirectConnectedStructuralElementsIds":[341727,341538,341952,341100],"NonDirectDependentElementsIds":[343946,342134,341592,341588,341584,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342134,341592,341588,341584,343927,343884,341586,341582,341538,341100]},{"Id":336317,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[341729,341540,341952,341100],"NonSupportingDirectElementsIds":[341540,341952,341100],"DirectSupportedElementsIds":[341540,341100],"DirectConnectedStructuralElementsIds":[341729,341540,341952,341100],"NonDirectDependentElementsIds":[343946,342136,341592,341588,341584,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342136,341592,341588,341584,343927,343884,341586,341582,341540,341100]},{"Id":336386,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[341731,341542,341952,341100],"NonSupportingDirectElementsIds":[341542,341952,341100],"DirectSupportedElementsIds":[341542,341100],"DirectConnectedStructuralElementsIds":[341731,341542,341952,341100],"NonDirectDependentElementsIds":[343946,342138,341592,341588,341584,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342138,341592,341588,341584,343927,343884,341586,341582,341542,341100]},{"Id":336523,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[341733,341544,341952,341100],"NonSupportingDirectElementsIds":[341544,341952,341100],"DirectSupportedElementsIds":[341544,341100],"DirectConnectedStructuralElementsIds":[341733,341544,341952,341100],"NonDirectDependentElementsIds":[343946,342140,341592,341588,341584,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342140,341592,341588,341584,343927,343884,341586,341582,341544,341100]},{"Id":336602,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[341735,341546,341952,341100],"NonSupportingDirectElementsIds":[341546,341952,341100],"DirectSupportedElementsIds":[341546,341100],"DirectConnectedStructuralElementsIds":[341735,341546,341952,341100],"NonDirectDependentElementsIds":[343946,342142,341592,341588,341584,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342142,341592,341588,341584,343927,343884,341586,341582,341546,341100]},{"Id":336771,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[341737,341548,341952,341100],"NonSupportingDirectElementsIds":[341548,341952,341100],"DirectSupportedElementsIds":[341548,341100],"DirectConnectedStructuralElementsIds":[341737,341548,341952,341100],"NonDirectDependentElementsIds":[343946,342144,341592,341588,341584,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342144,341592,341588,341584,343927,343884,341586,341582,341548,341100]},{"Id":336824,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405000000000001","DirectConnectedElementsIds":[341739,341550,341952,341100],"NonSupportingDirectElementsIds":[341550,341952,341100],"DirectSupportedElementsIds":[341550,341100],"DirectConnectedStructuralElementsIds":[341739,341550,341952,341100],"NonDirectDependentElementsIds":[343946,342146,341592,341588,341584,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342146,341592,341588,341584,343927,343884,341586,341582,341550,341100]},{"Id":337356,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[341741,341552,341952,341100],"NonSupportingDirectElementsIds":[341552,341952,341100],"DirectSupportedElementsIds":[341552,341100],"DirectConnectedStructuralElementsIds":[341741,341552,341952,341100],"NonDirectDependentElementsIds":[343946,342148,341592,341588,341584,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342148,341592,341588,341584,343927,343884,341586,341582,341552,341100]},{"Id":337686,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[341743,341554,341952,341100],"NonSupportingDirectElementsIds":[341554,341952,341100],"DirectSupportedElementsIds":[341554,341100],"DirectConnectedStructuralElementsIds":[341743,341554,341952,341100],"NonDirectDependentElementsIds":[343946,342150,341592,341588,341584,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342150,341592,341588,341584,343927,343884,341586,341582,341554,341100]},{"Id":338327,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405000000000001","DirectConnectedElementsIds":[341745,341556,341952,341100],"NonSupportingDirectElementsIds":[341556,341952,341100],"DirectSupportedElementsIds":[341556,341100],"DirectConnectedStructuralElementsIds":[341745,341556,341952,341100],"NonDirectDependentElementsIds":[343946,342152,341592,341588,341584,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342152,341592,341588,341584,343927,343884,341586,341582,341556,341100]},{"Id":338424,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[341747,341558,341952,341100],"NonSupportingDirectElementsIds":[341558,341952,341100],"DirectSupportedElementsIds":[341558,341100],"DirectConnectedStructuralElementsIds":[341747,341558,341952,341100],"NonDirectDependentElementsIds":[343946,342154,341592,341588,341584,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342154,341592,341588,341584,343927,343884,341586,341582,341558,341100]},{"Id":338565,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[341749,341560,341952,341100],"NonSupportingDirectElementsIds":[341560,341952,341100],"DirectSupportedElementsIds":[341560,341100],"DirectConnectedStructuralElementsIds":[341749,341560,341952,341100],"NonDirectDependentElementsIds":[343946,342156,341592,341588,341584,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342156,341592,341588,341584,343927,343884,341586,341582,341560,341100]},{"Id":338694,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[341751,341562,341952,341100],"NonSupportingDirectElementsIds":[341562,341952,341100],"DirectSupportedElementsIds":[341562,341100],"DirectConnectedStructuralElementsIds":[341751,341562,341952,341100],"NonDirectDependentElementsIds":[343946,342158,341592,341588,341584,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342158,341592,341588,341584,343927,343884,341586,341582,341562,341100]},{"Id":338835,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[341753,341564,341952,341100],"NonSupportingDirectElementsIds":[341564,341952,341100],"DirectSupportedElementsIds":[341564,341100],"DirectConnectedStructuralElementsIds":[341753,341564,341952,341100],"NonDirectDependentElementsIds":[343946,342160,341592,341588,341584,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342160,341592,341588,341584,343927,343884,341586,341582,341564,341100]},{"Id":338956,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[341755,341566,341952,341100],"NonSupportingDirectElementsIds":[341566,341952,341100],"DirectSupportedElementsIds":[341566,341100],"DirectConnectedStructuralElementsIds":[341755,341566,341952,341100],"NonDirectDependentElementsIds":[343946,342162,341592,341588,341584,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342162,341592,341588,341584,343927,343884,341586,341582,341566,341100]},{"Id":339053,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[341757,341568,341952,341100],"NonSupportingDirectElementsIds":[341568,341952,341100],"DirectSupportedElementsIds":[341568,341100],"DirectConnectedStructuralElementsIds":[341757,341568,341952,341100],"NonDirectDependentElementsIds":[343946,342164,341592,341588,341584,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342164,341592,341588,341584,343927,343884,341586,341582,341568,341100]},{"Id":339176,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405000000000001","DirectConnectedElementsIds":[341759,341570,341952,341100],"NonSupportingDirectElementsIds":[341570,341952,341100],"DirectSupportedElementsIds":[341570,341100],"DirectConnectedStructuralElementsIds":[341759,341570,341952,341100],"NonDirectDependentElementsIds":[341592,341588,341584,343946,343927,343884,341586,341582],"AllDependentElementsIds":[341592,341588,341584,343946,343927,343884,341586,341582,341570,341100]},{"Id":339279,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405000000000001","DirectConnectedElementsIds":[341761,341572,341952,341100],"NonSupportingDirectElementsIds":[341572,341952,341100],"DirectSupportedElementsIds":[341572,341100],"DirectConnectedStructuralElementsIds":[341761,341572,341952,341100],"NonDirectDependentElementsIds":[341592,341588,341584,343946,343927,343884,341586,341582],"AllDependentElementsIds":[341592,341588,341584,343946,343927,343884,341586,341582,341572,341100]},{"Id":340058,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.84821910297045","DirectConnectedElementsIds":[341763,341574,341952,341100],"NonSupportingDirectElementsIds":[341574,341952,341100],"DirectSupportedElementsIds":[341574,341100],"DirectConnectedStructuralElementsIds":[341763,341574,341952,341100],"NonDirectDependentElementsIds":[345244,343946,342170,341592,341588,341584,343927,343884,341586,341582],"AllDependentElementsIds":[345244,343946,342170,341592,341588,341584,343927,343884,341586,341582,341574,341100]},{"Id":340124,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.84821910297045","DirectConnectedElementsIds":[341765,341576,341952,341100],"NonSupportingDirectElementsIds":[341576,341952,341100],"DirectSupportedElementsIds":[341576,341100],"DirectConnectedStructuralElementsIds":[341765,341576,341952,341100],"NonDirectDependentElementsIds":[343946,342172,341592,341588,341584,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342172,341592,341588,341584,343927,343884,341586,341582,341576,341100]},{"Id":340197,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.84821910297045","DirectConnectedElementsIds":[341767,341578,341952,341100],"NonSupportingDirectElementsIds":[341578,341952,341100],"DirectSupportedElementsIds":[341578,341100],"DirectConnectedStructuralElementsIds":[341767,341578,341952,341100],"NonDirectDependentElementsIds":[343946,342174,341592,341588,341584,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342174,341592,341588,341584,343927,343884,341586,341582,341578,341100]},{"Id":340282,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.84821910297045","DirectConnectedElementsIds":[341769,341580,341952,341100],"NonSupportingDirectElementsIds":[341580,341952,341100],"DirectSupportedElementsIds":[341580,341100],"DirectConnectedStructuralElementsIds":[341769,341580,341952,341100],"NonDirectDependentElementsIds":[343946,342176,341592,341588,341584,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342176,341592,341588,341584,343927,343884,341586,341582,341580,341100]},{"Id":340648,"IsStructural":true,"Category":"Walls","Material":null,"Volume":"6.60149999999869","DirectConnectedElementsIds":[340729,341952,341100],"NonSupportingDirectElementsIds":[340729,341100],"DirectSupportedElementsIds":[340729,341100],"DirectConnectedStructuralElementsIds":[340729,341952,341100],"NonDirectDependentElementsIds":[341100,343946,343927,343884,341592,341588,341584,341586,341582],"AllDependentElementsIds":[341100,343946,343927,343884,341592,341588,341584,341586,341582,340729]},{"Id":340729,"IsStructural":true,"Category":"Walls","Material":null,"Volume":"4.73849999999911","DirectConnectedElementsIds":[340648,341952,341100],"NonSupportingDirectElementsIds":[341952,341100],"DirectSupportedElementsIds":[341100],"DirectConnectedStructuralElementsIds":[340648,341952,341100],"NonDirectDependentElementsIds":[343946,343927,343884,341592,341588,341584,341586,341582],"AllDependentElementsIds":[343946,343927,343884,341592,341588,341584,341586,341582,341100]},{"Id":340874,"IsStructural":true,"Category":"Walls","Material":null,"Volume":"6.60149999999869","DirectConnectedElementsIds":[340959,341952,341100],"NonSupportingDirectElementsIds":[340959,341100],"DirectSupportedElementsIds":[340959,341100],"DirectConnectedStructuralElementsIds":[340959,341952,341100],"NonDirectDependentElementsIds":[341100,343946,343927,343884,341592,341588,341584,341586,341582],"AllDependentElementsIds":[341100,343946,343927,343884,341592,341588,341584,341586,341582,340959]},{"Id":340959,"IsStructural":true,"Category":"Walls","Material":null,"Volume":"4.73849999999909","DirectConnectedElementsIds":[340874,341952,341100],"NonSupportingDirectElementsIds":[341952,341100],"DirectSupportedElementsIds":[341100],"DirectConnectedStructuralElementsIds":[340874,341952,341100],"NonDirectDependentElementsIds":[343946,343927,343884,341592,341588,341584,341586,341582],"AllDependentElementsIds":[343946,343927,343884,341592,341588,341584,341586,341582,341100]},{"Id":341100,"IsStructural":true,"Category":"Floors","Material":null,"Volume":"225.541821607002","DirectConnectedElementsIds":[341580,341578,341576,341574,341572,341570,341568,341566,341564,341562,341560,341558,341556,341554,341552,341550,341548,341546,341544,341542,341540,341538,341536,341534,340282,340197,340124,340058,339279,339176,339053,338956,338835,338694,338565,338424,338327,337686,337356,336824,336771,336602,336523,336386,336317,336172,335985,335807,341588,341586,341584,341582,340959,340874,340729,340648],"NonSupportingDirectElementsIds":[341580,341578,341576,341574,341572,341570,341568,341566,341564,341562,341560,341558,341556,341554,341552,341550,341548,341546,341544,341542,341540,341538,341536,341534,341588,341586,341584,341582],"DirectSupportedElementsIds":[341586,341582],"DirectConnectedStructuralElementsIds":[341580,341578,341576,341574,341572,341570,341568,341566,341564,341562,341560,341558,341556,341554,341552,341550,341548,341546,341544,341542,341540,341538,341536,341534,340282,340197,340124,340058,339279,339176,339053,338956,338835,338694,338565,338424,338327,337686,337356,336824,336771,336602,336523,336386,336317,336172,335985,335807,341588,341586,341584,341582,340959,340874,340729,340648],"NonDirectDependentElementsIds":[341592,341588,341584,343946,343927,343884],"AllDependentElementsIds":[341592,341588,341584,343946,343927,343884,341586,341582]},{"Id":341534,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405000000000001","DirectConnectedElementsIds":[335807,341592,341100],"NonSupportingDirectElementsIds":[341592,341100],"DirectSupportedElementsIds":[341592],"DirectConnectedStructuralElementsIds":[335807,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,341592]},{"Id":341536,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405000000000001","DirectConnectedElementsIds":[335985,341592,341100],"NonSupportingDirectElementsIds":[341592,341100],"DirectSupportedElementsIds":[341592],"DirectConnectedStructuralElementsIds":[335985,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,341592]},{"Id":341538,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[342134,336172,341592,341100],"NonSupportingDirectElementsIds":[342134,341592,341100],"DirectSupportedElementsIds":[342134,341592],"DirectConnectedStructuralElementsIds":[342134,336172,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,342134,341592]},{"Id":341540,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[342136,336317,341592,341100],"NonSupportingDirectElementsIds":[342136,341592,341100],"DirectSupportedElementsIds":[342136,341592],"DirectConnectedStructuralElementsIds":[342136,336317,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,342136,341592]},{"Id":341542,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[342138,336386,341592,341100],"NonSupportingDirectElementsIds":[342138,341592,341100],"DirectSupportedElementsIds":[342138,341592],"DirectConnectedStructuralElementsIds":[342138,336386,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,342138,341592]},{"Id":341544,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[342140,336523,341592,341100],"NonSupportingDirectElementsIds":[342140,341592,341100],"DirectSupportedElementsIds":[342140,341592],"DirectConnectedStructuralElementsIds":[342140,336523,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,342140,341592]},{"Id":341546,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[342142,336602,341592,341100],"NonSupportingDirectElementsIds":[342142,341592,341100],"DirectSupportedElementsIds":[342142,341592],"DirectConnectedStructuralElementsIds":[342142,336602,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,342142,341592]},{"Id":341548,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[342144,336771,341592,341100],"NonSupportingDirectElementsIds":[342144,341592,341100],"DirectSupportedElementsIds":[342144,341592],"DirectConnectedStructuralElementsIds":[342144,336771,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,342144,341592]},{"Id":341550,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405000000000001","DirectConnectedElementsIds":[342146,336824,341592,341100],"NonSupportingDirectElementsIds":[342146,341592,341100],"DirectSupportedElementsIds":[342146,341592],"DirectConnectedStructuralElementsIds":[342146,336824,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,342146,341592]},{"Id":341552,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[342148,337356,341592,341100],"NonSupportingDirectElementsIds":[342148,341592,341100],"DirectSupportedElementsIds":[342148,341592],"DirectConnectedStructuralElementsIds":[342148,337356,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,342148,341592]},{"Id":341554,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[342150,337686,341592,341100],"NonSupportingDirectElementsIds":[342150,341592,341100],"DirectSupportedElementsIds":[342150,341592],"DirectConnectedStructuralElementsIds":[342150,337686,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,342150,341592]},{"Id":341556,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405000000000001","DirectConnectedElementsIds":[342152,338327,341592,341100],"NonSupportingDirectElementsIds":[342152,341592,341100],"DirectSupportedElementsIds":[342152,341592],"DirectConnectedStructuralElementsIds":[342152,338327,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,342152,341592]},{"Id":341558,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[342154,338424,341592,341100],"NonSupportingDirectElementsIds":[342154,341592,341100],"DirectSupportedElementsIds":[342154,341592],"DirectConnectedStructuralElementsIds":[342154,338424,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,342154,341592]},{"Id":341560,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[342156,338565,341592,341100],"NonSupportingDirectElementsIds":[342156,341592,341100],"DirectSupportedElementsIds":[342156,341592],"DirectConnectedStructuralElementsIds":[342156,338565,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,342156,341592]},{"Id":341562,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[342158,338694,341592,341100],"NonSupportingDirectElementsIds":[342158,341592,341100],"DirectSupportedElementsIds":[342158,341592],"DirectConnectedStructuralElementsIds":[342158,338694,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,342158,341592]},{"Id":341564,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[342160,338835,341592,341100],"NonSupportingDirectElementsIds":[342160,341592,341100],"DirectSupportedElementsIds":[342160,341592],"DirectConnectedStructuralElementsIds":[342160,338835,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,342160,341592]},{"Id":341566,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[342162,338956,341592,341100],"NonSupportingDirectElementsIds":[342162,341592,341100],"DirectSupportedElementsIds":[342162,341592],"DirectConnectedStructuralElementsIds":[342162,338956,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,342162,341592]},{"Id":341568,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405","DirectConnectedElementsIds":[342164,339053,341592,341100],"NonSupportingDirectElementsIds":[342164,341592,341100],"DirectSupportedElementsIds":[342164,341592],"DirectConnectedStructuralElementsIds":[342164,339053,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,342164,341592]},{"Id":341570,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405000000000001","DirectConnectedElementsIds":[339176,341592,341100],"NonSupportingDirectElementsIds":[341592,341100],"DirectSupportedElementsIds":[341592],"DirectConnectedStructuralElementsIds":[339176,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,341592]},{"Id":341572,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.405000000000001","DirectConnectedElementsIds":[339279,341592,341100],"NonSupportingDirectElementsIds":[341592,341100],"DirectSupportedElementsIds":[341592],"DirectConnectedStructuralElementsIds":[339279,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,341592]},{"Id":341574,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.84821910297045","DirectConnectedElementsIds":[342170,340058,341592,341100],"NonSupportingDirectElementsIds":[342170,341592,341100],"DirectSupportedElementsIds":[342170,341592],"DirectConnectedStructuralElementsIds":[342170,340058,341592,341100],"NonDirectDependentElementsIds":[345244,343946,343927,343884],"AllDependentElementsIds":[345244,343946,343927,343884,342170,341592]},{"Id":341576,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.84821910297045","DirectConnectedElementsIds":[342172,340124,341592,341100],"NonSupportingDirectElementsIds":[342172,341592,341100],"DirectSupportedElementsIds":[342172,341592],"DirectConnectedStructuralElementsIds":[342172,340124,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,342172,341592]},{"Id":341578,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.84821910297045","DirectConnectedElementsIds":[342174,340197,341592,341100],"NonSupportingDirectElementsIds":[342174,341592,341100],"DirectSupportedElementsIds":[342174,341592],"DirectConnectedStructuralElementsIds":[342174,340197,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,342174,341592]},{"Id":341580,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.84821910297045","DirectConnectedElementsIds":[342176,340282,341592,341100],"NonSupportingDirectElementsIds":[342176,341592,341100],"DirectSupportedElementsIds":[342176,341592],"DirectConnectedStructuralElementsIds":[342176,340282,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,342176,341592]},{"Id":341582,"IsStructural":true,"Category":"Walls","Material":null,"Volume":"6.60149999999869","DirectConnectedElementsIds":[341584,341592,341100],"NonSupportingDirectElementsIds":[341584,341592],"DirectSupportedElementsIds":[341584,341592],"DirectConnectedStructuralElementsIds":[341584,341592,341100],"NonDirectDependentElementsIds":[341592,343946,343927,343884],"AllDependentElementsIds":[341592,343946,343927,343884,341584]},{"Id":341584,"IsStructural":true,"Category":"Walls","Material":null,"Volume":"4.73849999999911","DirectConnectedElementsIds":[341582,341592,341100],"NonSupportingDirectElementsIds":[341592,341100],"DirectSupportedElementsIds":[341592],"DirectConnectedStructuralElementsIds":[341582,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,341592]},{"Id":341586,"IsStructural":true,"Category":"Walls","Material":null,"Volume":"6.60149999999869","DirectConnectedElementsIds":[341588,341592,341100],"NonSupportingDirectElementsIds":[341588,341592],"DirectSupportedElementsIds":[341588,341592],"DirectConnectedStructuralElementsIds":[341588,341592,341100],"NonDirectDependentElementsIds":[341592,343946,343927,343884],"AllDependentElementsIds":[341592,343946,343927,343884,341588]},{"Id":341588,"IsStructural":true,"Category":"Walls","Material":null,"Volume":"4.73849999999909","DirectConnectedElementsIds":[341586,341592,341100],"NonSupportingDirectElementsIds":[341592,341100],"DirectSupportedElementsIds":[341592],"DirectConnectedStructuralElementsIds":[341586,341592,341100],"NonDirectDependentElementsIds":[343946,343927,343884],"AllDependentElementsIds":[343946,343927,343884,341592]},{"Id":341592,"IsStructural":true,"Category":"Floors","Material":null,"Volume":"225.541821607002","DirectConnectedElementsIds":[343927,343884,342176,342174,342172,342170,342164,342162,342160,342158,342156,342154,342152,342150,342148,342146,342144,342142,342140,342138,342136,342134,341580,341578,341576,341574,341572,341570,341568,341566,341564,341562,341560,341558,341556,341554,341552,341550,341548,341546,341544,341542,341540,341538,341536,341534,341588,341586,341584,341582],"NonSupportingDirectElementsIds":[343927,343884,342176,342174,342172,342170,342164,342162,342160,342158,342156,342154,342152,342150,342148,342146,342144,342142,342140,342138,342136,342134],"DirectSupportedElementsIds":[343927,343884],"DirectConnectedStructuralElementsIds":[343927,343884,342176,342174,342172,342170,342164,342162,342160,342158,342156,342154,342152,342150,342148,342146,342144,342142,342140,342138,342136,342134,341580,341578,341576,341574,341572,341570,341568,341566,341564,341562,341560,341558,341556,341554,341552,341550,341548,341546,341544,341542,341540,341538,341536,341534,341588,341586,341584,341582],"NonDirectDependentElementsIds":[343946],"AllDependentElementsIds":[343946,343927,343884]},{"Id":341723,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.270000000000001","DirectConnectedElementsIds":[335807,342539,341952],"NonSupportingDirectElementsIds":[335807,341952],"DirectSupportedElementsIds":[335807,341952],"DirectConnectedStructuralElementsIds":[335807,342539,341952],"NonDirectDependentElementsIds":[341592,341534,341100,341588,341584,340959,340729,340874,340648,343946,343927,343884,341586,341582],"AllDependentElementsIds":[341592,341534,341100,341588,341584,340959,340729,340874,340648,343946,343927,343884,341586,341582,335807,341952]},{"Id":341725,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.270000000000001","DirectConnectedElementsIds":[335985,342534,341952],"NonSupportingDirectElementsIds":[335985,341952],"DirectSupportedElementsIds":[335985,341952],"DirectConnectedStructuralElementsIds":[335985,342534,341952],"NonDirectDependentElementsIds":[341592,341536,341100,341588,341584,340959,340729,340874,340648,343946,343927,343884,341586,341582],"AllDependentElementsIds":[341592,341536,341100,341588,341584,340959,340729,340874,340648,343946,343927,343884,341586,341582,335985,341952]},{"Id":341727,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.27","DirectConnectedElementsIds":[336172,342529,341952],"NonSupportingDirectElementsIds":[336172,341952],"DirectSupportedElementsIds":[336172,341952],"DirectConnectedStructuralElementsIds":[336172,342529,341952],"NonDirectDependentElementsIds":[343946,342134,341592,341538,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342134,341592,341538,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,336172,341952]},{"Id":341729,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.27","DirectConnectedElementsIds":[336317,342502,341952],"NonSupportingDirectElementsIds":[336317,341952],"DirectSupportedElementsIds":[336317,341952],"DirectConnectedStructuralElementsIds":[336317,342502,341952],"NonDirectDependentElementsIds":[343946,342136,341592,341540,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342136,341592,341540,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,336317,341952]},{"Id":341731,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.27","DirectConnectedElementsIds":[336386,342497,341952],"NonSupportingDirectElementsIds":[336386,341952],"DirectSupportedElementsIds":[336386,341952],"DirectConnectedStructuralElementsIds":[336386,342497,341952],"NonDirectDependentElementsIds":[343946,342138,341592,341542,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342138,341592,341542,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,336386,341952]},{"Id":341733,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.27","DirectConnectedElementsIds":[336523,342458,341952],"NonSupportingDirectElementsIds":[336523,341952],"DirectSupportedElementsIds":[336523,341952],"DirectConnectedStructuralElementsIds":[336523,342458,341952],"NonDirectDependentElementsIds":[343946,342140,341592,341544,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342140,341592,341544,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,336523,341952]},{"Id":341735,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.27","DirectConnectedElementsIds":[336602,342453,341952],"NonSupportingDirectElementsIds":[336602,341952],"DirectSupportedElementsIds":[336602,341952],"DirectConnectedStructuralElementsIds":[336602,342453,341952],"NonDirectDependentElementsIds":[343946,342142,341592,341546,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342142,341592,341546,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,336602,341952]},{"Id":341737,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.27","DirectConnectedElementsIds":[336771,342448,341952],"NonSupportingDirectElementsIds":[336771,341952],"DirectSupportedElementsIds":[336771,341952],"DirectConnectedStructuralElementsIds":[336771,342448,341952],"NonDirectDependentElementsIds":[343946,342144,341592,341548,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342144,341592,341548,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,336771,341952]},{"Id":341739,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.270000000000001","DirectConnectedElementsIds":[336824,342389,341952],"NonSupportingDirectElementsIds":[336824,341952],"DirectSupportedElementsIds":[336824,341952],"DirectConnectedStructuralElementsIds":[336824,342389,341952],"NonDirectDependentElementsIds":[343946,342146,341592,341550,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342146,341592,341550,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,336824,341952]},{"Id":341741,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.27","DirectConnectedElementsIds":[337356,343012,341952],"NonSupportingDirectElementsIds":[337356,341952],"DirectSupportedElementsIds":[337356,341952],"DirectConnectedStructuralElementsIds":[337356,343012,341952],"NonDirectDependentElementsIds":[343946,342148,341592,341552,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342148,341592,341552,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,337356,341952]},{"Id":341743,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.27","DirectConnectedElementsIds":[337686,342973,341952],"NonSupportingDirectElementsIds":[337686,341952],"DirectSupportedElementsIds":[337686,341952],"DirectConnectedStructuralElementsIds":[337686,342973,341952],"NonDirectDependentElementsIds":[343946,342150,341592,341554,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342150,341592,341554,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,337686,341952]},{"Id":341745,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.270000000000001","DirectConnectedElementsIds":[338327,343147,341952],"NonSupportingDirectElementsIds":[338327,341952],"DirectSupportedElementsIds":[338327,341952],"DirectConnectedStructuralElementsIds":[338327,343147,341952],"NonDirectDependentElementsIds":[343946,342152,341592,341556,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342152,341592,341556,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,338327,341952]},{"Id":341747,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.27","DirectConnectedElementsIds":[338424,342780,341952],"NonSupportingDirectElementsIds":[338424,341952],"DirectSupportedElementsIds":[338424,341952],"DirectConnectedStructuralElementsIds":[338424,342780,341952],"NonDirectDependentElementsIds":[343946,342154,341592,341558,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342154,341592,341558,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,338424,341952]},{"Id":341749,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.27","DirectConnectedElementsIds":[338565,342819,341952],"NonSupportingDirectElementsIds":[338565,341952],"DirectSupportedElementsIds":[338565,341952],"DirectConnectedStructuralElementsIds":[338565,342819,341952],"NonDirectDependentElementsIds":[343946,342156,341592,341560,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342156,341592,341560,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,338565,341952]},{"Id":341751,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.27","DirectConnectedElementsIds":[338694,342770,341952],"NonSupportingDirectElementsIds":[338694,341952],"DirectSupportedElementsIds":[338694,341952],"DirectConnectedStructuralElementsIds":[338694,342770,341952],"NonDirectDependentElementsIds":[343946,342158,341592,341562,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342158,341592,341562,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,338694,341952]},{"Id":341753,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.27","DirectConnectedElementsIds":[338835,342775,341952],"NonSupportingDirectElementsIds":[338835,341952],"DirectSupportedElementsIds":[338835,341952],"DirectConnectedStructuralElementsIds":[338835,342775,341952],"NonDirectDependentElementsIds":[343946,342160,341592,341564,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342160,341592,341564,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,338835,341952]},{"Id":341755,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.27","DirectConnectedElementsIds":[338956,342620,341952],"NonSupportingDirectElementsIds":[338956,341952],"DirectSupportedElementsIds":[338956,341952],"DirectConnectedStructuralElementsIds":[338956,342620,341952],"NonDirectDependentElementsIds":[343946,342162,341592,341566,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342162,341592,341566,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,338956,341952]},{"Id":341757,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.27","DirectConnectedElementsIds":[339053,342765,341952],"NonSupportingDirectElementsIds":[339053,341952],"DirectSupportedElementsIds":[339053,341952],"DirectConnectedStructuralElementsIds":[339053,342765,341952],"NonDirectDependentElementsIds":[343946,342164,341592,341568,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342164,341592,341568,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,339053,341952]},{"Id":341759,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.270000000000001","DirectConnectedElementsIds":[339176,342615,341952],"NonSupportingDirectElementsIds":[339176,341952],"DirectSupportedElementsIds":[339176,341952],"DirectConnectedStructuralElementsIds":[339176,342615,341952],"NonDirectDependentElementsIds":[341592,341570,341100,341588,341584,340959,340729,340874,340648,343946,343927,343884,341586,341582],"AllDependentElementsIds":[341592,341570,341100,341588,341584,340959,340729,340874,340648,343946,343927,343884,341586,341582,339176,341952]},{"Id":341761,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.270000000000001","DirectConnectedElementsIds":[339279,342544,341952],"NonSupportingDirectElementsIds":[339279,341952],"DirectSupportedElementsIds":[339279,341952],"DirectConnectedStructuralElementsIds":[339279,342544,341952],"NonDirectDependentElementsIds":[341592,341572,341100,341588,341584,340959,340729,340874,340648,343946,343927,343884,341586,341582],"AllDependentElementsIds":[341592,341572,341100,341588,341584,340959,340729,340874,340648,343946,343927,343884,341586,341582,339279,341952]},{"Id":341763,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.5654794019803","DirectConnectedElementsIds":[340058,343102,341952],"NonSupportingDirectElementsIds":[340058,341952],"DirectSupportedElementsIds":[340058,341952],"DirectConnectedStructuralElementsIds":[340058,343102,341952],"NonDirectDependentElementsIds":[345244,343946,342170,341592,341574,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[345244,343946,342170,341592,341574,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,340058,341952]},{"Id":341765,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.5654794019803","DirectConnectedElementsIds":[340124,343055,341952],"NonSupportingDirectElementsIds":[340124,341952],"DirectSupportedElementsIds":[340124,341952],"DirectConnectedStructuralElementsIds":[340124,343055,341952],"NonDirectDependentElementsIds":[343946,342172,341592,341576,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342172,341592,341576,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,340124,341952]},{"Id":341767,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.5654794019803","DirectConnectedElementsIds":[340197,343142,341952],"NonSupportingDirectElementsIds":[340197,341952],"DirectSupportedElementsIds":[340197,341952],"DirectConnectedStructuralElementsIds":[340197,343142,341952],"NonDirectDependentElementsIds":[343946,342174,341592,341578,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342174,341592,341578,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,340197,341952]},{"Id":341769,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.5654794019803","DirectConnectedElementsIds":[340282,343107,341952],"NonSupportingDirectElementsIds":[340282,341952],"DirectSupportedElementsIds":[340282,341952],"DirectConnectedStructuralElementsIds":[340282,343107,341952],"NonDirectDependentElementsIds":[343946,342176,341592,341580,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[343946,342176,341592,341580,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,340282,341952]},{"Id":341771,"IsStructural":true,"Category":"Walls","Material":null,"Volume":"4.15649999999997","DirectConnectedElementsIds":[341773,343371,343360,341952],"NonSupportingDirectElementsIds":[341773,341952],"DirectSupportedElementsIds":[341773,341952],"DirectConnectedStructuralElementsIds":[341773,343371,343360,341952],"NonDirectDependentElementsIds":[341952,341100,340959,340729,340874,340648,343946,343927,343884,341592,341588,341584,341586,341582],"AllDependentElementsIds":[341952,341100,340959,340729,340874,340648,343946,343927,343884,341592,341588,341584,341586,341582,341773]},{"Id":341773,"IsStructural":true,"Category":"Walls","Material":null,"Volume":"2.98350000000001","DirectConnectedElementsIds":[341771,343360,341952],"NonSupportingDirectElementsIds":[341952],"DirectSupportedElementsIds":[341952],"DirectConnectedStructuralElementsIds":[341771,343360,341952],"NonDirectDependentElementsIds":[341100,340959,340729,340874,340648,343946,343927,343884,341592,341588,341584,341586,341582],"AllDependentElementsIds":[341100,340959,340729,340874,340648,343946,343927,343884,341592,341588,341584,341586,341582,341952]},{"Id":341775,"IsStructural":true,"Category":"Walls","Material":null,"Volume":"4.15649999999998","DirectConnectedElementsIds":[341777,343382,341952],"NonSupportingDirectElementsIds":[341777,341952],"DirectSupportedElementsIds":[341777,341952],"DirectConnectedStructuralElementsIds":[341777,343382,341952],"NonDirectDependentElementsIds":[341952,341100,340959,340729,340874,340648,343946,343927,343884,341592,341588,341584,341586,341582],"AllDependentElementsIds":[341952,341100,340959,340729,340874,340648,343946,343927,343884,341592,341588,341584,341586,341582,341777]},{"Id":341777,"IsStructural":true,"Category":"Walls","Material":null,"Volume":"2.98350000000001","DirectConnectedElementsIds":[341775,343393,343382,341952],"NonSupportingDirectElementsIds":[341952],"DirectSupportedElementsIds":[341952],"DirectConnectedStructuralElementsIds":[341775,343393,343382,341952],"NonDirectDependentElementsIds":[341100,340959,340729,340874,340648,343946,343927,343884,341592,341588,341584,341586,341582],"AllDependentElementsIds":[341100,340959,340729,340874,340648,343946,343927,343884,341592,341588,341584,341586,341582,341952]},{"Id":341952,"IsStructural":true,"Category":"Floors","Material":null,"Volume":"273.600000000001","DirectConnectedElementsIds":[341769,341767,341765,341763,341761,341759,341757,341755,341753,341751,341749,341747,341745,341743,341741,341739,341737,341735,341733,341731,341729,341727,341725,341723,340282,340197,340124,340058,339279,339176,339053,338956,338835,338694,338565,338424,338327,337686,337356,336824,336771,336602,336523,336386,336317,336172,335985,335807,341777,341775,341773,341771,340959,340874,340729,340648],"NonSupportingDirectElementsIds":[340282,340197,340124,340058,339279,339176,339053,338956,338835,338694,338565,338424,338327,337686,337356,336824,336771,336602,336523,336386,336317,336172,335985,335807,340959,340874,340729,340648],"DirectSupportedElementsIds":[340874,340648],"DirectConnectedStructuralElementsIds":[341769,341767,341765,341763,341761,341759,341757,341755,341753,341751,341749,341747,341745,341743,341741,341739,341737,341735,341733,341731,341729,341727,341725,341723,340282,340197,340124,340058,339279,339176,339053,338956,338835,338694,338565,338424,338327,337686,337356,336824,336771,336602,336523,336386,336317,336172,335985,335807,341777,341775,341773,341771,340959,340874,340729,340648],"NonDirectDependentElementsIds":[341100,340959,340729,343946,343927,343884,341592,341588,341584,341586,341582],"AllDependentElementsIds":[341100,340959,340729,343946,343927,343884,341592,341588,341584,341586,341582,340874,340648]},{"Id":342134,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.02533356","DirectConnectedElementsIds":[341538,343946,341592],"NonSupportingDirectElementsIds":[343946,341592],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[341538,343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":342136,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.0253335599999991","DirectConnectedElementsIds":[341540,343946,341592],"NonSupportingDirectElementsIds":[343946,341592],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[341540,343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":342138,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.02533356","DirectConnectedElementsIds":[341542,343946,341592],"NonSupportingDirectElementsIds":[343946,341592],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[341542,343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":342140,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.0253335599999991","DirectConnectedElementsIds":[341544,343946,341592],"NonSupportingDirectElementsIds":[343946,341592],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[341544,343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":342142,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.02533356","DirectConnectedElementsIds":[341546,343946,341592],"NonSupportingDirectElementsIds":[343946,341592],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[341546,343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":342144,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.0253335599999991","DirectConnectedElementsIds":[341548,343946,341592],"NonSupportingDirectElementsIds":[343946,341592],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[341548,343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":342146,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.0253335600000003","DirectConnectedElementsIds":[341550,343946,341592],"NonSupportingDirectElementsIds":[343946,341592],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[341550,343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":342148,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.0253335600000003","DirectConnectedElementsIds":[341552,343946,341592],"NonSupportingDirectElementsIds":[343946,341592],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[341552,343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":342150,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.0253335600000003","DirectConnectedElementsIds":[341554,343946,341592],"NonSupportingDirectElementsIds":[343946,341592],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[341554,343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":342152,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.0253335600000003","DirectConnectedElementsIds":[341556,343946,341592],"NonSupportingDirectElementsIds":[343946,341592],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[341556,343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":342154,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.0253335599999991","DirectConnectedElementsIds":[341558,343946,341592],"NonSupportingDirectElementsIds":[343946,341592],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[341558,343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":342156,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.02533356","DirectConnectedElementsIds":[341560,343946,341592],"NonSupportingDirectElementsIds":[343946,341592],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[341560,343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":342158,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.0253335599999991","DirectConnectedElementsIds":[341562,343946,341592],"NonSupportingDirectElementsIds":[343946,341592],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[341562,343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":342160,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.0253335600000001","DirectConnectedElementsIds":[341564,343946,341592],"NonSupportingDirectElementsIds":[343946,341592],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[341564,343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":342162,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.0253335599999991","DirectConnectedElementsIds":[341566,343946,341592],"NonSupportingDirectElementsIds":[343946,341592],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[341566,343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":342164,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.02533356","DirectConnectedElementsIds":[341568,343946,341592],"NonSupportingDirectElementsIds":[343946,341592],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[341568,343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":342170,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.0959148299999999","DirectConnectedElementsIds":[341574,345244,343946,341592],"NonSupportingDirectElementsIds":[345244,343946,341592],"DirectSupportedElementsIds":[345244,343946],"DirectConnectedStructuralElementsIds":[341574,345244,343946,341592],"NonDirectDependentElementsIds":[343946],"AllDependentElementsIds":[343946,345244]},{"Id":342172,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.0959148299999999","DirectConnectedElementsIds":[341576,343946,341592],"NonSupportingDirectElementsIds":[343946,341592],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[341576,343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":342174,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.00921215999999999","DirectConnectedElementsIds":[341578,343946,341592],"NonSupportingDirectElementsIds":[343946,341592],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[341578,343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":342176,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.00921215999999999","DirectConnectedElementsIds":[341580,343946,341592],"NonSupportingDirectElementsIds":[343946,341592],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[341580,343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":342389,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"0.971999999999999","DirectConnectedElementsIds":[341739],"NonSupportingDirectElementsIds":[341739],"DirectSupportedElementsIds":[341739],"DirectConnectedStructuralElementsIds":[341739],"NonDirectDependentElementsIds":[336824,341952,343946,342146,341592,341550,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[336824,341952,343946,342146,341592,341550,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,341739]},{"Id":342448,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"0.971999999999999","DirectConnectedElementsIds":[341737],"NonSupportingDirectElementsIds":[341737],"DirectSupportedElementsIds":[341737],"DirectConnectedStructuralElementsIds":[341737],"NonDirectDependentElementsIds":[336771,341952,343946,342144,341592,341548,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[336771,341952,343946,342144,341592,341548,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,341737]},{"Id":342453,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"0.971999999999999","DirectConnectedElementsIds":[341735],"NonSupportingDirectElementsIds":[341735],"DirectSupportedElementsIds":[341735],"DirectConnectedStructuralElementsIds":[341735],"NonDirectDependentElementsIds":[336602,341952,343946,342142,341592,341546,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[336602,341952,343946,342142,341592,341546,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,341735]},{"Id":342458,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"0.971999999999999","DirectConnectedElementsIds":[341733],"NonSupportingDirectElementsIds":[341733],"DirectSupportedElementsIds":[341733],"DirectConnectedStructuralElementsIds":[341733],"NonDirectDependentElementsIds":[336523,341952,343946,342140,341592,341544,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[336523,341952,343946,342140,341592,341544,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,341733]},{"Id":342497,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"0.971999999999999","DirectConnectedElementsIds":[341731],"NonSupportingDirectElementsIds":[341731],"DirectSupportedElementsIds":[341731],"DirectConnectedStructuralElementsIds":[341731],"NonDirectDependentElementsIds":[336386,341952,343946,342138,341592,341542,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[336386,341952,343946,342138,341592,341542,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,341731]},{"Id":342502,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"0.971999999999999","DirectConnectedElementsIds":[341729],"NonSupportingDirectElementsIds":[341729],"DirectSupportedElementsIds":[341729],"DirectConnectedStructuralElementsIds":[341729],"NonDirectDependentElementsIds":[336317,341952,343946,342136,341592,341540,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[336317,341952,343946,342136,341592,341540,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,341729]},{"Id":342529,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"0.971999999999999","DirectConnectedElementsIds":[341727],"NonSupportingDirectElementsIds":[341727],"DirectSupportedElementsIds":[341727],"DirectConnectedStructuralElementsIds":[341727],"NonDirectDependentElementsIds":[336172,341952,343946,342134,341592,341538,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[336172,341952,343946,342134,341592,341538,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,341727]},{"Id":342534,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"0.971999999999999","DirectConnectedElementsIds":[341725],"NonSupportingDirectElementsIds":[341725],"DirectSupportedElementsIds":[341725],"DirectConnectedStructuralElementsIds":[341725],"NonDirectDependentElementsIds":[335985,341952,341592,341536,341100,341588,341584,340959,340729,340874,340648,343946,343927,343884,341586,341582],"AllDependentElementsIds":[335985,341952,341592,341536,341100,341588,341584,340959,340729,340874,340648,343946,343927,343884,341586,341582,341725]},{"Id":342539,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"0.971999999999999","DirectConnectedElementsIds":[341723],"NonSupportingDirectElementsIds":[341723],"DirectSupportedElementsIds":[341723],"DirectConnectedStructuralElementsIds":[341723],"NonDirectDependentElementsIds":[335807,341952,341592,341534,341100,341588,341584,340959,340729,340874,340648,343946,343927,343884,341586,341582],"AllDependentElementsIds":[335807,341952,341592,341534,341100,341588,341584,340959,340729,340874,340648,343946,343927,343884,341586,341582,341723]},{"Id":342544,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"0.971999999999999","DirectConnectedElementsIds":[341761],"NonSupportingDirectElementsIds":[341761],"DirectSupportedElementsIds":[341761],"DirectConnectedStructuralElementsIds":[341761],"NonDirectDependentElementsIds":[339279,341952,341592,341572,341100,341588,341584,340959,340729,340874,340648,343946,343927,343884,341586,341582],"AllDependentElementsIds":[339279,341952,341592,341572,341100,341588,341584,340959,340729,340874,340648,343946,343927,343884,341586,341582,341761]},{"Id":342615,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"0.971999999999999","DirectConnectedElementsIds":[341759],"NonSupportingDirectElementsIds":[341759],"DirectSupportedElementsIds":[341759],"DirectConnectedStructuralElementsIds":[341759],"NonDirectDependentElementsIds":[339176,341952,341592,341570,341100,341588,341584,340959,340729,340874,340648,343946,343927,343884,341586,341582],"AllDependentElementsIds":[339176,341952,341592,341570,341100,341588,341584,340959,340729,340874,340648,343946,343927,343884,341586,341582,341759]},{"Id":342620,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"0.971999999999999","DirectConnectedElementsIds":[341755],"NonSupportingDirectElementsIds":[341755],"DirectSupportedElementsIds":[341755],"DirectConnectedStructuralElementsIds":[341755],"NonDirectDependentElementsIds":[338956,341952,343946,342162,341592,341566,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[338956,341952,343946,342162,341592,341566,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,341755]},{"Id":342765,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"0.971999999999999","DirectConnectedElementsIds":[341757],"NonSupportingDirectElementsIds":[341757],"DirectSupportedElementsIds":[341757],"DirectConnectedStructuralElementsIds":[341757],"NonDirectDependentElementsIds":[339053,341952,343946,342164,341592,341568,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[339053,341952,343946,342164,341592,341568,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,341757]},{"Id":342770,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"0.971999999999999","DirectConnectedElementsIds":[341751],"NonSupportingDirectElementsIds":[341751],"DirectSupportedElementsIds":[341751],"DirectConnectedStructuralElementsIds":[341751],"NonDirectDependentElementsIds":[338694,341952,343946,342158,341592,341562,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[338694,341952,343946,342158,341592,341562,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,341751]},{"Id":342775,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"0.971999999999999","DirectConnectedElementsIds":[341753],"NonSupportingDirectElementsIds":[341753],"DirectSupportedElementsIds":[341753],"DirectConnectedStructuralElementsIds":[341753],"NonDirectDependentElementsIds":[338835,341952,343946,342160,341592,341564,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[338835,341952,343946,342160,341592,341564,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,341753]},{"Id":342780,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"0.971999999999999","DirectConnectedElementsIds":[341747],"NonSupportingDirectElementsIds":[341747],"DirectSupportedElementsIds":[341747],"DirectConnectedStructuralElementsIds":[341747],"NonDirectDependentElementsIds":[338424,341952,343946,342154,341592,341558,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[338424,341952,343946,342154,341592,341558,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,341747]},{"Id":342819,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"0.971999999999999","DirectConnectedElementsIds":[341749],"NonSupportingDirectElementsIds":[341749],"DirectSupportedElementsIds":[341749],"DirectConnectedStructuralElementsIds":[341749],"NonDirectDependentElementsIds":[338565,341952,343946,342156,341592,341560,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[338565,341952,343946,342156,341592,341560,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,341749]},{"Id":342973,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"1.944","DirectConnectedElementsIds":[341743],"NonSupportingDirectElementsIds":[341743],"DirectSupportedElementsIds":[341743],"DirectConnectedStructuralElementsIds":[341743],"NonDirectDependentElementsIds":[337686,341952,343946,342150,341592,341554,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[337686,341952,343946,342150,341592,341554,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,341743]},{"Id":343012,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"1.944","DirectConnectedElementsIds":[341741],"NonSupportingDirectElementsIds":[341741],"DirectSupportedElementsIds":[341741],"DirectConnectedStructuralElementsIds":[341741],"NonDirectDependentElementsIds":[337356,341952,343946,342148,341592,341552,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[337356,341952,343946,342148,341592,341552,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,341741]},{"Id":343055,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"1.944","DirectConnectedElementsIds":[341765],"NonSupportingDirectElementsIds":[341765],"DirectSupportedElementsIds":[341765],"DirectConnectedStructuralElementsIds":[341765],"NonDirectDependentElementsIds":[340124,341952,343946,342172,341592,341576,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[340124,341952,343946,342172,341592,341576,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,341765]},{"Id":343102,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"1.944","DirectConnectedElementsIds":[341763],"NonSupportingDirectElementsIds":[341763],"DirectSupportedElementsIds":[341763],"DirectConnectedStructuralElementsIds":[341763],"NonDirectDependentElementsIds":[340058,341952,345244,343946,342170,341592,341574,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[340058,341952,345244,343946,342170,341592,341574,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,341763]},{"Id":343107,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"1.944","DirectConnectedElementsIds":[341769],"NonSupportingDirectElementsIds":[341769],"DirectSupportedElementsIds":[341769],"DirectConnectedStructuralElementsIds":[341769],"NonDirectDependentElementsIds":[340282,341952,343946,342176,341592,341580,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[340282,341952,343946,342176,341592,341580,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,341769]},{"Id":343142,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"1.944","DirectConnectedElementsIds":[341767],"NonSupportingDirectElementsIds":[341767],"DirectSupportedElementsIds":[341767],"DirectConnectedStructuralElementsIds":[341767],"NonDirectDependentElementsIds":[340197,341952,343946,342174,341592,341578,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[340197,341952,343946,342174,341592,341578,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,341767]},{"Id":343147,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"1.944","DirectConnectedElementsIds":[341745],"NonSupportingDirectElementsIds":[341745],"DirectSupportedElementsIds":[341745],"DirectConnectedStructuralElementsIds":[341745],"NonDirectDependentElementsIds":[338327,341952,343946,342152,341592,341556,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582],"AllDependentElementsIds":[338327,341952,343946,342152,341592,341556,341100,341588,341584,340959,340729,340874,340648,343927,343884,341586,341582,341745]},{"Id":343360,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"2.43","DirectConnectedElementsIds":[341773,341771,343371],"NonSupportingDirectElementsIds":[341773,341771,343371],"DirectSupportedElementsIds":[341773,341771,343371],"DirectConnectedStructuralElementsIds":[341773,341771,343371],"NonDirectDependentElementsIds":[341952,341773,341100,340959,340729,341771,340874,340648,343946,343927,343884,341592,341588,341584,341586,341582],"AllDependentElementsIds":[341952,341773,341100,340959,340729,341771,340874,340648,343946,343927,343884,341592,341588,341584,341586,341582,343371]},{"Id":343371,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"2.718","DirectConnectedElementsIds":[341771,343360],"NonSupportingDirectElementsIds":[341771],"DirectSupportedElementsIds":[341771],"DirectConnectedStructuralElementsIds":[341771,343360],"NonDirectDependentElementsIds":[341952,341773,341100,340959,340729,340874,340648,343946,343927,343884,341592,341588,341584,341586,341582],"AllDependentElementsIds":[341952,341773,341100,340959,340729,340874,340648,343946,343927,343884,341592,341588,341584,341586,341582,341771]},{"Id":343382,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"3.042","DirectConnectedElementsIds":[341777,341775,343393],"NonSupportingDirectElementsIds":[341777,341775,343393],"DirectSupportedElementsIds":[341777,341775,343393],"DirectConnectedStructuralElementsIds":[341777,341775,343393],"NonDirectDependentElementsIds":[341952,341777,341100,340959,340729,340874,340648,343946,343927,343884,341592,341588,341584,341586,341582],"AllDependentElementsIds":[341952,341777,341100,340959,340729,340874,340648,343946,343927,343884,341592,341588,341584,341586,341582,341775,343393]},{"Id":343393,"IsStructural":true,"Category":"Structural Foundations","Material":null,"Volume":"1.89","DirectConnectedElementsIds":[341777,343382],"NonSupportingDirectElementsIds":[341777],"DirectSupportedElementsIds":[341777],"DirectConnectedStructuralElementsIds":[341777,343382],"NonDirectDependentElementsIds":[341952,341100,340959,340729,340874,340648,343946,343927,343884,341592,341588,341584,341586,341582],"AllDependentElementsIds":[341952,341100,340959,340729,340874,340648,343946,343927,343884,341592,341588,341584,341586,341582,341777]},{"Id":343483,"IsStructural":true,"Category":"Structural Framing","Material":null,"Volume":"0.0240191718400002","DirectConnectedElementsIds":[343946],"NonSupportingDirectElementsIds":[343946],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[343946],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":343501,"IsStructural":true,"Category":"Structural Framing","Material":null,"Volume":"0.0240191718400002","DirectConnectedElementsIds":[343946],"NonSupportingDirectElementsIds":[343946],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[343946],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":343520,"IsStructural":true,"Category":"Structural Framing","Material":null,"Volume":"0.0240191718400002","DirectConnectedElementsIds":[343946],"NonSupportingDirectElementsIds":[343946],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[343946],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":343884,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.0253335599999994","DirectConnectedElementsIds":[343946,341592],"NonSupportingDirectElementsIds":[343946],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":343927,"IsStructural":true,"Category":"Structural Columns","Material":null,"Volume":"0.0253335599999994","DirectConnectedElementsIds":[343946,341592],"NonSupportingDirectElementsIds":[343946],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[343946,341592],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":343946,"IsStructural":true,"Category":"Floors","Material":null,"Volume":"50.5097190922164","DirectConnectedElementsIds":[343927,343884,342176,342174,342172,342170,342164,342162,342160,342158,342156,342154,342152,342150,342148,342146,342144,342142,342140,342138,342136,342134,345516,345484,345456,345397,345373,345298,345244,345217,345187,345114,345083,345047,345014,343520,343501,343483],"NonSupportingDirectElementsIds":[],"DirectSupportedElementsIds":[],"DirectConnectedStructuralElementsIds":[343927,343884,342176,342174,342172,342170,342164,342162,342160,342158,342156,342154,342152,342150,342148,342146,342144,342142,342140,342138,342136,342134,345516,345484,345456,345397,345373,345298,345244,345217,345187,345114,345083,345047,345014,343520,343501,343483],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[]},{"Id":345014,"IsStructural":true,"Category":"Structural Framing","Material":null,"Volume":"0.0240191718400002","DirectConnectedElementsIds":[343946],"NonSupportingDirectElementsIds":[343946],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[343946],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":345047,"IsStructural":true,"Category":"Structural Framing","Material":null,"Volume":"0.0240191718400002","DirectConnectedElementsIds":[343946],"NonSupportingDirectElementsIds":[343946],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[343946],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":345083,"IsStructural":true,"Category":"Structural Framing","Material":null,"Volume":"0.0240191718400002","DirectConnectedElementsIds":[343946],"NonSupportingDirectElementsIds":[343946],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[343946],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":345114,"IsStructural":true,"Category":"Structural Framing","Material":null,"Volume":"0.0240191718400002","DirectConnectedElementsIds":[343946],"NonSupportingDirectElementsIds":[343946],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[343946],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":345187,"IsStructural":true,"Category":"Structural Framing","Material":null,"Volume":"0.0162318259200001","DirectConnectedElementsIds":[343946],"NonSupportingDirectElementsIds":[343946],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[343946],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":345217,"IsStructural":true,"Category":"Structural Framing","Material":null,"Volume":"0.0164652006400001","DirectConnectedElementsIds":[343946],"NonSupportingDirectElementsIds":[343946],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[343946],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":345244,"IsStructural":true,"Category":"Structural Framing","Material":null,"Volume":"0.0179145804800002","DirectConnectedElementsIds":[342170,343946],"NonSupportingDirectElementsIds":[343946],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[342170,343946],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":345298,"IsStructural":true,"Category":"Structural Framing","Material":null,"Volume":"0.0162318259200001","DirectConnectedElementsIds":[343946],"NonSupportingDirectElementsIds":[343946],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[343946],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":345373,"IsStructural":true,"Category":"Structural Framing","Material":null,"Volume":"0.0169380915200001","DirectConnectedElementsIds":[343946],"NonSupportingDirectElementsIds":[343946],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[343946],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":345397,"IsStructural":true,"Category":"Structural Framing","Material":null,"Volume":"0.0169380915200001","DirectConnectedElementsIds":[343946],"NonSupportingDirectElementsIds":[343946],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[343946],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":345456,"IsStructural":true,"Category":"Structural Framing","Material":null,"Volume":"0.0169380915200001","DirectConnectedElementsIds":[343946],"NonSupportingDirectElementsIds":[343946],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[343946],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":345484,"IsStructural":true,"Category":"Structural Framing","Material":null,"Volume":"0.0240191718400002","DirectConnectedElementsIds":[343946],"NonSupportingDirectElementsIds":[343946],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[343946],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]},{"Id":345516,"IsStructural":true,"Category":"Structural Framing","Material":null,"Volume":"0.0169380915200001","DirectConnectedElementsIds":[343946],"NonSupportingDirectElementsIds":[343946],"DirectSupportedElementsIds":[343946],"DirectConnectedStructuralElementsIds":[343946],"NonDirectDependentElementsIds":[],"AllDependentElementsIds":[343946]}]') ;
+function onSelectionChanged(node) {
+
+var id = node.data.key;
+var graphElmnt = GetGraphElementById(id);
+$( "#Id" )[0].innerText = graphElmnt.Id;
+$( "#Category" )[0].innerText = graphElmnt.Category;
+$( "#IsStructural" )[0].innerText = graphElmnt.IsStructural;
+$( "#Volume" )[0].innerText = graphElmnt.Volume;
+$( "#DirectConnectedElements" )[0].innerText =  graphElmnt.DirectConnectedElementsIds.length;
+$( "#DirectConnectedStructuralElements" )[0].innerText =  graphElmnt.DirectConnectedStructuralElementsIds.length;
+$( "#DirectSupportedElements" )[0].innerText =  graphElmnt.DirectSupportedElementsIds.length;
+$( "#NonDirectDependentElements" )[0].innerText=  graphElmnt.NonDirectDependentElementsIds.length;
+$( "#AllDependentElements" )[0].innerText=  graphElmnt.AllDependentElementsIds.length;
+$( "#DirectConnectedElementsVolume" )[0].innerText = GetTotalGraphElementsVolume(graphElmnt.DirectConnectedElementsIds);
+$( "#DirectConnectedStructuralElementsVolume" )[0].innerText =  GetTotalGraphElementsVolume(graphElmnt.DirectConnectedStructuralElementsIds);
+$( "#DirectSupportedElementsVolume" )[0].innerText = GetTotalGraphElementsVolume(graphElmnt.DirectSupportedElementsIds);
+$( "#NonDirectDependentElementsVolume" )[0].innerText = GetTotalGraphElementsVolume(graphElmnt.NonDirectDependentElementsIds);
+$( "#AllDependentElementsVolume" )[0].innerText = GetTotalGraphElementsVolume(graphElmnt.AllDependentElementsIds);
+OpenPopup();
+    
+  }
+  function GetTotalGraphElementsVolume( ids)
+  {
+  var totVolume = 0 ;
+   for (j = 0; j < ids.length; j++) { 
+  totVolume = totVolume + parseFloat(GetGraphElementById(ids[j]).Volume);
+   }
+  
+  return totVolume;
+  }
+  function GetGraphElementById( id)
+  {
+  for (i = 0; i < graphElmnts.length; i++) { 
+    if(graphElmnts[i].Id == id)
+	return graphElmnts[i];
+}
+  }
+   function OpenPopup() {
+
+        addOrEditPopup = $('#GraphNodeDetails').bPopup({
+            escClose: true,
+            modalClose: true
+        });
+    }
+  function init() {
+    if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
+    var $ = go.GraphObject.make;  // for conciseness in defining templates
+    myDiagram =
+      $(go.Diagram, "myDiagramDiv",  // must name or refer to the DIV HTML element
+        {
+          initialAutoScale: go.Diagram.Uniform,  // an initial automatic zoom-to-fit
+          contentAlignment: go.Spot.Center,  // align document to the center of the viewport
+          layout:
+            $(go.ForceDirectedLayout,  // automatically spread nodes apart
+              { maxIterations: 200, defaultSpringLength: 30, defaultElectricalCharge: 100 })
+        });
+    // define each Node's appearance
+    myDiagram.nodeTemplate =
+      $(go.Node, "Auto",  // the whole node panel
+	  { selectionAdorned: false,  // don't bother with any selection adornment
+        selectionChanged: onSelectionChanged }, 
+        { locationSpot: go.Spot.Center },
+        // define the node's outer shape, which will surround the TextBlock
+        $(go.Shape, "Rectangle",
+          { fill: $(go.Brush, "Linear", { 0: "rgb(254, 201, 0)", 1: "rgb(254, 162, 0)" }), stroke: "black" }, new go.Binding("fill", "fill")),
+        $(go.TextBlock,
+          { font: "bold 10pt helvetica, bold arial, sans-serif", margin: 4 },
+          new go.Binding("text", "text"))
+      );
+    // replace the default Link template in the linkTemplateMap
+    myDiagram.linkTemplate =
+      $(go.Link,  // the whole link panel
+        $(go.Shape,  // the link shape
+          { stroke: "black" }),
+        $(go.Shape,  // the arrowhead
+          { toArrow: "standard", stroke: null }),
+        $(go.Panel, "Auto",
+          $(go.Shape,  // the label background, which becomes transparent around the edges
+            { fill: $(go.Brush, "Radial", { 0: "rgb(240, 240, 240)", 0.3: "rgb(240, 240, 240)", 1: "rgba(240, 240, 240, 0)" }),
+              stroke: null }),
+          $(go.TextBlock,  // the label text
+            { textAlign: "center",
+              font: "10pt helvetica, arial, sans-serif",
+              stroke: "#555555",
+              margin: 4 },
+            new go.Binding("text", "text"))
+        )
+      );
+    // create the model for the concept map
+    var nodeDataArray = [ { key: 335807, text: ' Columns-335807 [4]' , fill: '#FFFF00' }
+, { key: 335985, text: ' Columns-335985 [4]' , fill: '#FFFF00' }
+, { key: 336172, text: ' Columns-336172 [4]' , fill: '#FFFF00' }
+, { key: 336317, text: ' Columns-336317 [4]' , fill: '#FFFF00' }
+, { key: 336386, text: ' Columns-336386 [4]' , fill: '#FFFF00' }
+, { key: 336523, text: ' Columns-336523 [4]' , fill: '#FFFF00' }
+, { key: 336602, text: ' Columns-336602 [4]' , fill: '#FFFF00' }
+, { key: 336771, text: ' Columns-336771 [4]' , fill: '#FFFF00' }
+, { key: 336824, text: ' Columns-336824 [4]' , fill: '#FFFF00' }
+, { key: 337356, text: ' Columns-337356 [4]' , fill: '#FFFF00' }
+, { key: 337686, text: ' Columns-337686 [4]' , fill: '#FFFF00' }
+, { key: 338327, text: ' Columns-338327 [4]' , fill: '#FFFF00' }
+, { key: 338424, text: ' Columns-338424 [4]' , fill: '#FFFF00' }
+, { key: 338565, text: ' Columns-338565 [4]' , fill: '#FFFF00' }
+, { key: 338694, text: ' Columns-338694 [4]' , fill: '#FFFF00' }
+, { key: 338835, text: ' Columns-338835 [4]' , fill: '#FFFF00' }
+, { key: 338956, text: ' Columns-338956 [4]' , fill: '#FFFF00' }
+, { key: 339053, text: ' Columns-339053 [4]' , fill: '#FFFF00' }
+, { key: 339176, text: ' Columns-339176 [4]' , fill: '#FFFF00' }
+, { key: 339279, text: ' Columns-339279 [4]' , fill: '#FFFF00' }
+, { key: 340058, text: ' Columns-340058 [4]' , fill: '#FFFF00' }
+, { key: 340124, text: ' Columns-340124 [4]' , fill: '#FFFF00' }
+, { key: 340197, text: ' Columns-340197 [4]' , fill: '#FFFF00' }
+, { key: 340282, text: ' Columns-340282 [4]' , fill: '#FFFF00' }
+, { key: 340648, text: 'Walls-340648 [3]' , fill: '#008000' }
+, { key: 340729, text: 'Walls-340729 [3]' , fill: '#008000' }
+, { key: 340874, text: 'Walls-340874 [3]' , fill: '#008000' }
+, { key: 340959, text: 'Walls-340959 [3]' , fill: '#008000' }
+, { key: 341100, text: 'Floors-341100 [56]' , fill: '#FF0000' }
+, { key: 341534, text: ' Columns-341534 [3]' , fill: '#008000' }
+, { key: 341536, text: ' Columns-341536 [3]' , fill: '#008000' }
+, { key: 341538, text: ' Columns-341538 [4]' , fill: '#FFFF00' }
+, { key: 341540, text: ' Columns-341540 [4]' , fill: '#FFFF00' }
+, { key: 341542, text: ' Columns-341542 [4]' , fill: '#FFFF00' }
+, { key: 341544, text: ' Columns-341544 [4]' , fill: '#FFFF00' }
+, { key: 341546, text: ' Columns-341546 [4]' , fill: '#FFFF00' }
+, { key: 341548, text: ' Columns-341548 [4]' , fill: '#FFFF00' }
+, { key: 341550, text: ' Columns-341550 [4]' , fill: '#FFFF00' }
+, { key: 341552, text: ' Columns-341552 [4]' , fill: '#FFFF00' }
+, { key: 341554, text: ' Columns-341554 [4]' , fill: '#FFFF00' }
+, { key: 341556, text: ' Columns-341556 [4]' , fill: '#FFFF00' }
+, { key: 341558, text: ' Columns-341558 [4]' , fill: '#FFFF00' }
+, { key: 341560, text: ' Columns-341560 [4]' , fill: '#FFFF00' }
+, { key: 341562, text: ' Columns-341562 [4]' , fill: '#FFFF00' }
+, { key: 341564, text: ' Columns-341564 [4]' , fill: '#FFFF00' }
+, { key: 341566, text: ' Columns-341566 [4]' , fill: '#FFFF00' }
+, { key: 341568, text: ' Columns-341568 [4]' , fill: '#FFFF00' }
+, { key: 341570, text: ' Columns-341570 [3]' , fill: '#008000' }
+, { key: 341572, text: ' Columns-341572 [3]' , fill: '#008000' }
+, { key: 341574, text: ' Columns-341574 [4]' , fill: '#FFFF00' }
+, { key: 341576, text: ' Columns-341576 [4]' , fill: '#FFFF00' }
+, { key: 341578, text: ' Columns-341578 [4]' , fill: '#FFFF00' }
+, { key: 341580, text: ' Columns-341580 [4]' , fill: '#FFFF00' }
+, { key: 341582, text: 'Walls-341582 [3]' , fill: '#008000' }
+, { key: 341584, text: 'Walls-341584 [3]' , fill: '#008000' }
+, { key: 341586, text: 'Walls-341586 [3]' , fill: '#008000' }
+, { key: 341588, text: 'Walls-341588 [3]' , fill: '#008000' }
+, { key: 341592, text: 'Floors-341592 [50]' , fill: '#FF0000' }
+, { key: 341723, text: ' Columns-341723 [3]' , fill: '#008000' }
+, { key: 341725, text: ' Columns-341725 [3]' , fill: '#008000' }
+, { key: 341727, text: ' Columns-341727 [3]' , fill: '#008000' }
+, { key: 341729, text: ' Columns-341729 [3]' , fill: '#008000' }
+, { key: 341731, text: ' Columns-341731 [3]' , fill: '#008000' }
+, { key: 341733, text: ' Columns-341733 [3]' , fill: '#008000' }
+, { key: 341735, text: ' Columns-341735 [3]' , fill: '#008000' }
+, { key: 341737, text: ' Columns-341737 [3]' , fill: '#008000' }
+, { key: 341739, text: ' Columns-341739 [3]' , fill: '#008000' }
+, { key: 341741, text: ' Columns-341741 [3]' , fill: '#008000' }
+, { key: 341743, text: ' Columns-341743 [3]' , fill: '#008000' }
+, { key: 341745, text: ' Columns-341745 [3]' , fill: '#008000' }
+, { key: 341747, text: ' Columns-341747 [3]' , fill: '#008000' }
+, { key: 341749, text: ' Columns-341749 [3]' , fill: '#008000' }
+, { key: 341751, text: ' Columns-341751 [3]' , fill: '#008000' }
+, { key: 341753, text: ' Columns-341753 [3]' , fill: '#008000' }
+, { key: 341755, text: ' Columns-341755 [3]' , fill: '#008000' }
+, { key: 341757, text: ' Columns-341757 [3]' , fill: '#008000' }
+, { key: 341759, text: ' Columns-341759 [3]' , fill: '#008000' }
+, { key: 341761, text: ' Columns-341761 [3]' , fill: '#008000' }
+, { key: 341763, text: ' Columns-341763 [3]' , fill: '#008000' }
+, { key: 341765, text: ' Columns-341765 [3]' , fill: '#008000' }
+, { key: 341767, text: ' Columns-341767 [3]' , fill: '#008000' }
+, { key: 341769, text: ' Columns-341769 [3]' , fill: '#008000' }
+, { key: 341771, text: 'Walls-341771 [4]' , fill: '#FFFF00' }
+, { key: 341773, text: 'Walls-341773 [3]' , fill: '#008000' }
+, { key: 341775, text: 'Walls-341775 [3]' , fill: '#008000' }
+, { key: 341777, text: 'Walls-341777 [4]' , fill: '#FFFF00' }
+, { key: 341952, text: 'Floors-341952 [56]' , fill: '#FF0000' }
+, { key: 342134, text: ' Columns-342134 [3]' , fill: '#008000' }
+, { key: 342136, text: ' Columns-342136 [3]' , fill: '#008000' }
+, { key: 342138, text: ' Columns-342138 [3]' , fill: '#008000' }
+, { key: 342140, text: ' Columns-342140 [3]' , fill: '#008000' }
+, { key: 342142, text: ' Columns-342142 [3]' , fill: '#008000' }
+, { key: 342144, text: ' Columns-342144 [3]' , fill: '#008000' }
+, { key: 342146, text: ' Columns-342146 [3]' , fill: '#008000' }
+, { key: 342148, text: ' Columns-342148 [3]' , fill: '#008000' }
+, { key: 342150, text: ' Columns-342150 [3]' , fill: '#008000' }
+, { key: 342152, text: ' Columns-342152 [3]' , fill: '#008000' }
+, { key: 342154, text: ' Columns-342154 [3]' , fill: '#008000' }
+, { key: 342156, text: ' Columns-342156 [3]' , fill: '#008000' }
+, { key: 342158, text: ' Columns-342158 [3]' , fill: '#008000' }
+, { key: 342160, text: ' Columns-342160 [3]' , fill: '#008000' }
+, { key: 342162, text: ' Columns-342162 [3]' , fill: '#008000' }
+, { key: 342164, text: ' Columns-342164 [3]' , fill: '#008000' }
+, { key: 342170, text: ' Columns-342170 [4]' , fill: '#FFFF00' }
+, { key: 342172, text: ' Columns-342172 [3]' , fill: '#008000' }
+, { key: 342174, text: ' Columns-342174 [3]' , fill: '#008000' }
+, { key: 342176, text: ' Columns-342176 [3]' , fill: '#008000' }
+, { key: 342389, text: ' Foundations-342389 [1]' , fill: '#008000' }
+, { key: 342448, text: ' Foundations-342448 [1]' , fill: '#008000' }
+, { key: 342453, text: ' Foundations-342453 [1]' , fill: '#008000' }
+, { key: 342458, text: ' Foundations-342458 [1]' , fill: '#008000' }
+, { key: 342497, text: ' Foundations-342497 [1]' , fill: '#008000' }
+, { key: 342502, text: ' Foundations-342502 [1]' , fill: '#008000' }
+, { key: 342529, text: ' Foundations-342529 [1]' , fill: '#008000' }
+, { key: 342534, text: ' Foundations-342534 [1]' , fill: '#008000' }
+, { key: 342539, text: ' Foundations-342539 [1]' , fill: '#008000' }
+, { key: 342544, text: ' Foundations-342544 [1]' , fill: '#008000' }
+, { key: 342615, text: ' Foundations-342615 [1]' , fill: '#008000' }
+, { key: 342620, text: ' Foundations-342620 [1]' , fill: '#008000' }
+, { key: 342765, text: ' Foundations-342765 [1]' , fill: '#008000' }
+, { key: 342770, text: ' Foundations-342770 [1]' , fill: '#008000' }
+, { key: 342775, text: ' Foundations-342775 [1]' , fill: '#008000' }
+, { key: 342780, text: ' Foundations-342780 [1]' , fill: '#008000' }
+, { key: 342819, text: ' Foundations-342819 [1]' , fill: '#008000' }
+, { key: 342973, text: ' Foundations-342973 [1]' , fill: '#008000' }
+, { key: 343012, text: ' Foundations-343012 [1]' , fill: '#008000' }
+, { key: 343055, text: ' Foundations-343055 [1]' , fill: '#008000' }
+, { key: 343102, text: ' Foundations-343102 [1]' , fill: '#008000' }
+, { key: 343107, text: ' Foundations-343107 [1]' , fill: '#008000' }
+, { key: 343142, text: ' Foundations-343142 [1]' , fill: '#008000' }
+, { key: 343147, text: ' Foundations-343147 [1]' , fill: '#008000' }
+, { key: 343360, text: ' Foundations-343360 [3]' , fill: '#008000' }
+, { key: 343371, text: ' Foundations-343371 [2]' , fill: '#008000' }
+, { key: 343382, text: ' Foundations-343382 [3]' , fill: '#008000' }
+, { key: 343393, text: ' Foundations-343393 [2]' , fill: '#008000' }
+, { key: 343483, text: ' Framing-343483 [1]' , fill: '#008000' }
+, { key: 343501, text: ' Framing-343501 [1]' , fill: '#008000' }
+, { key: 343520, text: ' Framing-343520 [1]' , fill: '#008000' }
+, { key: 343884, text: ' Columns-343884 [2]' , fill: '#008000' }
+, { key: 343927, text: ' Columns-343927 [2]' , fill: '#008000' }
+, { key: 343946, text: 'Floors-343946 [38]' , fill: '#FF0000' }
+, { key: 345014, text: ' Framing-345014 [1]' , fill: '#008000' }
+, { key: 345047, text: ' Framing-345047 [1]' , fill: '#008000' }
+, { key: 345083, text: ' Framing-345083 [1]' , fill: '#008000' }
+, { key: 345114, text: ' Framing-345114 [1]' , fill: '#008000' }
+, { key: 345187, text: ' Framing-345187 [1]' , fill: '#008000' }
+, { key: 345217, text: ' Framing-345217 [1]' , fill: '#008000' }
+, { key: 345244, text: ' Framing-345244 [2]' , fill: '#008000' }
+, { key: 345298, text: ' Framing-345298 [1]' , fill: '#008000' }
+, { key: 345373, text: ' Framing-345373 [1]' , fill: '#008000' }
+, { key: 345397, text: ' Framing-345397 [1]' , fill: '#008000' }
+, { key: 345456, text: ' Framing-345456 [1]' , fill: '#008000' }
+, { key: 345484, text: ' Framing-345484 [1]' , fill: '#008000' }
+, { key: 345516, text: ' Framing-345516 [1]' , fill: '#008000' }
+];
+    var linkDataArray = [ { from: 335807, to: 341534, text: 'S' }
+, { from: 335807, to: 341952, text: 'U' }
+, { from: 335807, to: 341100, text: 'S' }
+, { from: 335985, to: 341536, text: 'S' }
+, { from: 335985, to: 341952, text: 'U' }
+, { from: 335985, to: 341100, text: 'S' }
+, { from: 336172, to: 341538, text: 'S' }
+, { from: 336172, to: 341952, text: 'U' }
+, { from: 336172, to: 341100, text: 'S' }
+, { from: 336317, to: 341540, text: 'S' }
+, { from: 336317, to: 341952, text: 'U' }
+, { from: 336317, to: 341100, text: 'S' }
+, { from: 336386, to: 341542, text: 'S' }
+, { from: 336386, to: 341952, text: 'U' }
+, { from: 336386, to: 341100, text: 'S' }
+, { from: 336523, to: 341544, text: 'S' }
+, { from: 336523, to: 341952, text: 'U' }
+, { from: 336523, to: 341100, text: 'S' }
+, { from: 336602, to: 341546, text: 'S' }
+, { from: 336602, to: 341952, text: 'U' }
+, { from: 336602, to: 341100, text: 'S' }
+, { from: 336771, to: 341548, text: 'S' }
+, { from: 336771, to: 341952, text: 'U' }
+, { from: 336771, to: 341100, text: 'S' }
+, { from: 336824, to: 341550, text: 'S' }
+, { from: 336824, to: 341952, text: 'U' }
+, { from: 336824, to: 341100, text: 'S' }
+, { from: 337356, to: 341552, text: 'S' }
+, { from: 337356, to: 341952, text: 'U' }
+, { from: 337356, to: 341100, text: 'S' }
+, { from: 337686, to: 341554, text: 'S' }
+, { from: 337686, to: 341952, text: 'U' }
+, { from: 337686, to: 341100, text: 'S' }
+, { from: 338327, to: 341556, text: 'S' }
+, { from: 338327, to: 341952, text: 'U' }
+, { from: 338327, to: 341100, text: 'S' }
+, { from: 338424, to: 341558, text: 'S' }
+, { from: 338424, to: 341952, text: 'U' }
+, { from: 338424, to: 341100, text: 'S' }
+, { from: 338565, to: 341560, text: 'S' }
+, { from: 338565, to: 341952, text: 'U' }
+, { from: 338565, to: 341100, text: 'S' }
+, { from: 338694, to: 341562, text: 'S' }
+, { from: 338694, to: 341952, text: 'U' }
+, { from: 338694, to: 341100, text: 'S' }
+, { from: 338835, to: 341564, text: 'S' }
+, { from: 338835, to: 341952, text: 'U' }
+, { from: 338835, to: 341100, text: 'S' }
+, { from: 338956, to: 341566, text: 'S' }
+, { from: 338956, to: 341952, text: 'U' }
+, { from: 338956, to: 341100, text: 'S' }
+, { from: 339053, to: 341568, text: 'S' }
+, { from: 339053, to: 341952, text: 'U' }
+, { from: 339053, to: 341100, text: 'S' }
+, { from: 339176, to: 341570, text: 'S' }
+, { from: 339176, to: 341952, text: 'U' }
+, { from: 339176, to: 341100, text: 'S' }
+, { from: 339279, to: 341572, text: 'S' }
+, { from: 339279, to: 341952, text: 'U' }
+, { from: 339279, to: 341100, text: 'S' }
+, { from: 340058, to: 341574, text: 'S' }
+, { from: 340058, to: 341952, text: 'U' }
+, { from: 340058, to: 341100, text: 'S' }
+, { from: 340124, to: 341576, text: 'S' }
+, { from: 340124, to: 341952, text: 'U' }
+, { from: 340124, to: 341100, text: 'S' }
+, { from: 340197, to: 341578, text: 'S' }
+, { from: 340197, to: 341952, text: 'U' }
+, { from: 340197, to: 341100, text: 'S' }
+, { from: 340282, to: 341580, text: 'S' }
+, { from: 340282, to: 341952, text: 'U' }
+, { from: 340282, to: 341100, text: 'S' }
+, { from: 340648, to: 340729, text: 'S' }
+, { from: 340648, to: 341100, text: 'S' }
+, { from: 340729, to: 341952, text: 'U' }
+, { from: 340729, to: 341100, text: 'S' }
+, { from: 340874, to: 340959, text: 'S' }
+, { from: 340874, to: 341100, text: 'S' }
+, { from: 340959, to: 341952, text: 'U' }
+, { from: 340959, to: 341100, text: 'S' }
+, { from: 341100, to: 341580, text: 'U' }
+, { from: 341100, to: 341578, text: 'U' }
+, { from: 341100, to: 341576, text: 'U' }
+, { from: 341100, to: 341574, text: 'U' }
+, { from: 341100, to: 341572, text: 'U' }
+, { from: 341100, to: 341570, text: 'U' }
+, { from: 341100, to: 341568, text: 'U' }
+, { from: 341100, to: 341566, text: 'U' }
+, { from: 341100, to: 341564, text: 'U' }
+, { from: 341100, to: 341562, text: 'U' }
+, { from: 341100, to: 341560, text: 'U' }
+, { from: 341100, to: 341558, text: 'U' }
+, { from: 341100, to: 341556, text: 'U' }
+, { from: 341100, to: 341554, text: 'U' }
+, { from: 341100, to: 341552, text: 'U' }
+, { from: 341100, to: 341550, text: 'U' }
+, { from: 341100, to: 341548, text: 'U' }
+, { from: 341100, to: 341546, text: 'U' }
+, { from: 341100, to: 341544, text: 'U' }
+, { from: 341100, to: 341542, text: 'U' }
+, { from: 341100, to: 341540, text: 'U' }
+, { from: 341100, to: 341538, text: 'U' }
+, { from: 341100, to: 341536, text: 'U' }
+, { from: 341100, to: 341534, text: 'U' }
+, { from: 341100, to: 341588, text: 'U' }
+, { from: 341100, to: 341586, text: 'S' }
+, { from: 341100, to: 341584, text: 'U' }
+, { from: 341100, to: 341582, text: 'S' }
+, { from: 341534, to: 341592, text: 'S' }
+, { from: 341534, to: 341100, text: 'U' }
+, { from: 341536, to: 341592, text: 'S' }
+, { from: 341536, to: 341100, text: 'U' }
+, { from: 341538, to: 342134, text: 'S' }
+, { from: 341538, to: 341592, text: 'S' }
+, { from: 341538, to: 341100, text: 'U' }
+, { from: 341540, to: 342136, text: 'S' }
+, { from: 341540, to: 341592, text: 'S' }
+, { from: 341540, to: 341100, text: 'U' }
+, { from: 341542, to: 342138, text: 'S' }
+, { from: 341542, to: 341592, text: 'S' }
+, { from: 341542, to: 341100, text: 'U' }
+, { from: 341544, to: 342140, text: 'S' }
+, { from: 341544, to: 341592, text: 'S' }
+, { from: 341544, to: 341100, text: 'U' }
+, { from: 341546, to: 342142, text: 'S' }
+, { from: 341546, to: 341592, text: 'S' }
+, { from: 341546, to: 341100, text: 'U' }
+, { from: 341548, to: 342144, text: 'S' }
+, { from: 341548, to: 341592, text: 'S' }
+, { from: 341548, to: 341100, text: 'U' }
+, { from: 341550, to: 342146, text: 'S' }
+, { from: 341550, to: 341592, text: 'S' }
+, { from: 341550, to: 341100, text: 'U' }
+, { from: 341552, to: 342148, text: 'S' }
+, { from: 341552, to: 341592, text: 'S' }
+, { from: 341552, to: 341100, text: 'U' }
+, { from: 341554, to: 342150, text: 'S' }
+, { from: 341554, to: 341592, text: 'S' }
+, { from: 341554, to: 341100, text: 'U' }
+, { from: 341556, to: 342152, text: 'S' }
+, { from: 341556, to: 341592, text: 'S' }
+, { from: 341556, to: 341100, text: 'U' }
+, { from: 341558, to: 342154, text: 'S' }
+, { from: 341558, to: 341592, text: 'S' }
+, { from: 341558, to: 341100, text: 'U' }
+, { from: 341560, to: 342156, text: 'S' }
+, { from: 341560, to: 341592, text: 'S' }
+, { from: 341560, to: 341100, text: 'U' }
+, { from: 341562, to: 342158, text: 'S' }
+, { from: 341562, to: 341592, text: 'S' }
+, { from: 341562, to: 341100, text: 'U' }
+, { from: 341564, to: 342160, text: 'S' }
+, { from: 341564, to: 341592, text: 'S' }
+, { from: 341564, to: 341100, text: 'U' }
+, { from: 341566, to: 342162, text: 'S' }
+, { from: 341566, to: 341592, text: 'S' }
+, { from: 341566, to: 341100, text: 'U' }
+, { from: 341568, to: 342164, text: 'S' }
+, { from: 341568, to: 341592, text: 'S' }
+, { from: 341568, to: 341100, text: 'U' }
+, { from: 341570, to: 341592, text: 'S' }
+, { from: 341570, to: 341100, text: 'U' }
+, { from: 341572, to: 341592, text: 'S' }
+, { from: 341572, to: 341100, text: 'U' }
+, { from: 341574, to: 342170, text: 'S' }
+, { from: 341574, to: 341592, text: 'S' }
+, { from: 341574, to: 341100, text: 'U' }
+, { from: 341576, to: 342172, text: 'S' }
+, { from: 341576, to: 341592, text: 'S' }
+, { from: 341576, to: 341100, text: 'U' }
+, { from: 341578, to: 342174, text: 'S' }
+, { from: 341578, to: 341592, text: 'S' }
+, { from: 341578, to: 341100, text: 'U' }
+, { from: 341580, to: 342176, text: 'S' }
+, { from: 341580, to: 341592, text: 'S' }
+, { from: 341580, to: 341100, text: 'U' }
+, { from: 341582, to: 341584, text: 'S' }
+, { from: 341582, to: 341592, text: 'S' }
+, { from: 341584, to: 341592, text: 'S' }
+, { from: 341584, to: 341100, text: 'U' }
+, { from: 341586, to: 341588, text: 'S' }
+, { from: 341586, to: 341592, text: 'S' }
+, { from: 341588, to: 341592, text: 'S' }
+, { from: 341588, to: 341100, text: 'U' }
+, { from: 341592, to: 343927, text: 'S' }
+, { from: 341592, to: 343884, text: 'S' }
+, { from: 341592, to: 342176, text: 'U' }
+, { from: 341592, to: 342174, text: 'U' }
+, { from: 341592, to: 342172, text: 'U' }
+, { from: 341592, to: 342170, text: 'U' }
+, { from: 341592, to: 342164, text: 'U' }
+, { from: 341592, to: 342162, text: 'U' }
+, { from: 341592, to: 342160, text: 'U' }
+, { from: 341592, to: 342158, text: 'U' }
+, { from: 341592, to: 342156, text: 'U' }
+, { from: 341592, to: 342154, text: 'U' }
+, { from: 341592, to: 342152, text: 'U' }
+, { from: 341592, to: 342150, text: 'U' }
+, { from: 341592, to: 342148, text: 'U' }
+, { from: 341592, to: 342146, text: 'U' }
+, { from: 341592, to: 342144, text: 'U' }
+, { from: 341592, to: 342142, text: 'U' }
+, { from: 341592, to: 342140, text: 'U' }
+, { from: 341592, to: 342138, text: 'U' }
+, { from: 341592, to: 342136, text: 'U' }
+, { from: 341592, to: 342134, text: 'U' }
+, { from: 341723, to: 335807, text: 'S' }
+, { from: 341723, to: 341952, text: 'S' }
+, { from: 341725, to: 335985, text: 'S' }
+, { from: 341725, to: 341952, text: 'S' }
+, { from: 341727, to: 336172, text: 'S' }
+, { from: 341727, to: 341952, text: 'S' }
+, { from: 341729, to: 336317, text: 'S' }
+, { from: 341729, to: 341952, text: 'S' }
+, { from: 341731, to: 336386, text: 'S' }
+, { from: 341731, to: 341952, text: 'S' }
+, { from: 341733, to: 336523, text: 'S' }
+, { from: 341733, to: 341952, text: 'S' }
+, { from: 341735, to: 336602, text: 'S' }
+, { from: 341735, to: 341952, text: 'S' }
+, { from: 341737, to: 336771, text: 'S' }
+, { from: 341737, to: 341952, text: 'S' }
+, { from: 341739, to: 336824, text: 'S' }
+, { from: 341739, to: 341952, text: 'S' }
+, { from: 341741, to: 337356, text: 'S' }
+, { from: 341741, to: 341952, text: 'S' }
+, { from: 341743, to: 337686, text: 'S' }
+, { from: 341743, to: 341952, text: 'S' }
+, { from: 341745, to: 338327, text: 'S' }
+, { from: 341745, to: 341952, text: 'S' }
+, { from: 341747, to: 338424, text: 'S' }
+, { from: 341747, to: 341952, text: 'S' }
+, { from: 341749, to: 338565, text: 'S' }
+, { from: 341749, to: 341952, text: 'S' }
+, { from: 341751, to: 338694, text: 'S' }
+, { from: 341751, to: 341952, text: 'S' }
+, { from: 341753, to: 338835, text: 'S' }
+, { from: 341753, to: 341952, text: 'S' }
+, { from: 341755, to: 338956, text: 'S' }
+, { from: 341755, to: 341952, text: 'S' }
+, { from: 341757, to: 339053, text: 'S' }
+, { from: 341757, to: 341952, text: 'S' }
+, { from: 341759, to: 339176, text: 'S' }
+, { from: 341759, to: 341952, text: 'S' }
+, { from: 341761, to: 339279, text: 'S' }
+, { from: 341761, to: 341952, text: 'S' }
+, { from: 341763, to: 340058, text: 'S' }
+, { from: 341763, to: 341952, text: 'S' }
+, { from: 341765, to: 340124, text: 'S' }
+, { from: 341765, to: 341952, text: 'S' }
+, { from: 341767, to: 340197, text: 'S' }
+, { from: 341767, to: 341952, text: 'S' }
+, { from: 341769, to: 340282, text: 'S' }
+, { from: 341769, to: 341952, text: 'S' }
+, { from: 341771, to: 341773, text: 'S' }
+, { from: 341771, to: 341952, text: 'S' }
+, { from: 341773, to: 341952, text: 'S' }
+, { from: 341775, to: 341777, text: 'S' }
+, { from: 341775, to: 341952, text: 'S' }
+, { from: 341777, to: 341952, text: 'S' }
+, { from: 341952, to: 340282, text: 'U' }
+, { from: 341952, to: 340197, text: 'U' }
+, { from: 341952, to: 340124, text: 'U' }
+, { from: 341952, to: 340058, text: 'U' }
+, { from: 341952, to: 339279, text: 'U' }
+, { from: 341952, to: 339176, text: 'U' }
+, { from: 341952, to: 339053, text: 'U' }
+, { from: 341952, to: 338956, text: 'U' }
+, { from: 341952, to: 338835, text: 'U' }
+, { from: 341952, to: 338694, text: 'U' }
+, { from: 341952, to: 338565, text: 'U' }
+, { from: 341952, to: 338424, text: 'U' }
+, { from: 341952, to: 338327, text: 'U' }
+, { from: 341952, to: 337686, text: 'U' }
+, { from: 341952, to: 337356, text: 'U' }
+, { from: 341952, to: 336824, text: 'U' }
+, { from: 341952, to: 336771, text: 'U' }
+, { from: 341952, to: 336602, text: 'U' }
+, { from: 341952, to: 336523, text: 'U' }
+, { from: 341952, to: 336386, text: 'U' }
+, { from: 341952, to: 336317, text: 'U' }
+, { from: 341952, to: 336172, text: 'U' }
+, { from: 341952, to: 335985, text: 'U' }
+, { from: 341952, to: 335807, text: 'U' }
+, { from: 341952, to: 340959, text: 'U' }
+, { from: 341952, to: 340874, text: 'S' }
+, { from: 341952, to: 340729, text: 'U' }
+, { from: 341952, to: 340648, text: 'S' }
+, { from: 342134, to: 343946, text: 'S' }
+, { from: 342134, to: 341592, text: 'U' }
+, { from: 342136, to: 343946, text: 'S' }
+, { from: 342136, to: 341592, text: 'U' }
+, { from: 342138, to: 343946, text: 'S' }
+, { from: 342138, to: 341592, text: 'U' }
+, { from: 342140, to: 343946, text: 'S' }
+, { from: 342140, to: 341592, text: 'U' }
+, { from: 342142, to: 343946, text: 'S' }
+, { from: 342142, to: 341592, text: 'U' }
+, { from: 342144, to: 343946, text: 'S' }
+, { from: 342144, to: 341592, text: 'U' }
+, { from: 342146, to: 343946, text: 'S' }
+, { from: 342146, to: 341592, text: 'U' }
+, { from: 342148, to: 343946, text: 'S' }
+, { from: 342148, to: 341592, text: 'U' }
+, { from: 342150, to: 343946, text: 'S' }
+, { from: 342150, to: 341592, text: 'U' }
+, { from: 342152, to: 343946, text: 'S' }
+, { from: 342152, to: 341592, text: 'U' }
+, { from: 342154, to: 343946, text: 'S' }
+, { from: 342154, to: 341592, text: 'U' }
+, { from: 342156, to: 343946, text: 'S' }
+, { from: 342156, to: 341592, text: 'U' }
+, { from: 342158, to: 343946, text: 'S' }
+, { from: 342158, to: 341592, text: 'U' }
+, { from: 342160, to: 343946, text: 'S' }
+, { from: 342160, to: 341592, text: 'U' }
+, { from: 342162, to: 343946, text: 'S' }
+, { from: 342162, to: 341592, text: 'U' }
+, { from: 342164, to: 343946, text: 'S' }
+, { from: 342164, to: 341592, text: 'U' }
+, { from: 342170, to: 345244, text: 'S' }
+, { from: 342170, to: 343946, text: 'S' }
+, { from: 342170, to: 341592, text: 'U' }
+, { from: 342172, to: 343946, text: 'S' }
+, { from: 342172, to: 341592, text: 'U' }
+, { from: 342174, to: 343946, text: 'S' }
+, { from: 342174, to: 341592, text: 'U' }
+, { from: 342176, to: 343946, text: 'S' }
+, { from: 342176, to: 341592, text: 'U' }
+, { from: 342389, to: 341739, text: 'S' }
+, { from: 342448, to: 341737, text: 'S' }
+, { from: 342453, to: 341735, text: 'S' }
+, { from: 342458, to: 341733, text: 'S' }
+, { from: 342497, to: 341731, text: 'S' }
+, { from: 342502, to: 341729, text: 'S' }
+, { from: 342529, to: 341727, text: 'S' }
+, { from: 342534, to: 341725, text: 'S' }
+, { from: 342539, to: 341723, text: 'S' }
+, { from: 342544, to: 341761, text: 'S' }
+, { from: 342615, to: 341759, text: 'S' }
+, { from: 342620, to: 341755, text: 'S' }
+, { from: 342765, to: 341757, text: 'S' }
+, { from: 342770, to: 341751, text: 'S' }
+, { from: 342775, to: 341753, text: 'S' }
+, { from: 342780, to: 341747, text: 'S' }
+, { from: 342819, to: 341749, text: 'S' }
+, { from: 342973, to: 341743, text: 'S' }
+, { from: 343012, to: 341741, text: 'S' }
+, { from: 343055, to: 341765, text: 'S' }
+, { from: 343102, to: 341763, text: 'S' }
+, { from: 343107, to: 341769, text: 'S' }
+, { from: 343142, to: 341767, text: 'S' }
+, { from: 343147, to: 341745, text: 'S' }
+, { from: 343360, to: 341773, text: 'S' }
+, { from: 343360, to: 341771, text: 'S' }
+, { from: 343360, to: 343371, text: 'S' }
+, { from: 343371, to: 341771, text: 'S' }
+, { from: 343382, to: 341777, text: 'S' }
+, { from: 343382, to: 341775, text: 'S' }
+, { from: 343382, to: 343393, text: 'S' }
+, { from: 343393, to: 341777, text: 'S' }
+, { from: 343483, to: 343946, text: 'S' }
+, { from: 343501, to: 343946, text: 'S' }
+, { from: 343520, to: 343946, text: 'S' }
+, { from: 343884, to: 343946, text: 'S' }
+, { from: 343927, to: 343946, text: 'S' }
+, { from: 345014, to: 343946, text: 'S' }
+, { from: 345047, to: 343946, text: 'S' }
+, { from: 345083, to: 343946, text: 'S' }
+, { from: 345114, to: 343946, text: 'S' }
+, { from: 345187, to: 343946, text: 'S' }
+, { from: 345217, to: 343946, text: 'S' }
+, { from: 345244, to: 343946, text: 'S' }
+, { from: 345298, to: 343946, text: 'S' }
+, { from: 345373, to: 343946, text: 'S' }
+, { from: 345397, to: 343946, text: 'S' }
+, { from: 345456, to: 343946, text: 'S' }
+, { from: 345484, to: 343946, text: 'S' }
+, { from: 345516, to: 343946, text: 'S' }
+];
+    myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+  }
+</script>
+</head>
+<body onload="init()">
+<div id="sample">
+  <div id="myDiagramDiv" style="background-color: whitesmoke; border: solid 1px black; width: 100%; height: 700px"></div>
+
+</div>
+<div id="GraphNodeDetails" style="display: none">
+   
+       <table>
+        <tr>
+            <td style="font-size: 10px;color: white">Id</td>
+            <td style="font-size: 10px;color: white"> <label  id="Id" ></label> </td>
+        </tr>
+        <tr>
+            <td style="font-size: 10px;color: white">Category</td>
+            <td style="font-size: 10px;color: white"> <label  id="Category" ></label> </td>
+        </tr>
+		  <tr>
+            <td style="font-size: 10px;color: white">Is Structural Element</td>
+            <td style="font-size: 10px;color: white"> <label  id="IsStructural" ></label> </td>
+        </tr>
+		 <tr>
+            <td style="font-size: 10px;color: white">Volume</td>
+            <td style="font-size: 10px;color: white"> <label  id="Volume" ></label> </td>
+        </tr>
+       
+	    <tr>
+            <td style="font-size: 10px;color: white">#Direct Connected Elements</td>
+            <td style="font-size: 10px;color: white"> <label  id="DirectConnectedElements" ></label> </td>
+        </tr>
+		
+		<tr>
+            <td style="font-size: 10px;color: white">#Direct Connected Structural Elements</td>
+            <td style="font-size: 10px;color: white"> <label  id="DirectConnectedStructuralElements" ></label> </td>
+        </tr>
+		
+		 <tr>
+            <td style="font-size: 10px;color: white">#Direct Supported Elements</td>
+            <td style="font-size: 10px;color: white"> <label  id="DirectSupportedElements" ></label> </td>
+        </tr>
+		 <tr>
+            <td style="font-size: 10px;color: white">#Non Direct Dependent Elements</td>
+            <td style="font-size: 10px;color: white"> <label  id="NonDirectDependentElements" ></label> </td>
+        </tr>
+		 <tr>
+            <td style="font-size: 10px;color: white">#All Dependent Elements</td>
+            <td style="font-size: 10px;color: white"> <label  id="AllDependentElements" ></label> </td>
+        </tr>
+	   
+	   	<tr>
+            <td style="font-size: 10px;color: white">Direct Connected Elements (Volume m3)</td>
+           <td style="font-size: 10px;color: white"> <label  id="DirectConnectedElementsVolume" ></label> </td>
+        </tr>
+			<tr>
+            <td style="font-size: 10px;color: white">#Direct Connected Structural Elements (volume m3)</td>
+            <td style="font-size: 10px;color: white"> <label  id="DirectConnectedStructuralElementsVolume" ></label> </td>
+        </tr>
+		 <tr>
+            <td style="font-size: 10px;color: white">Direct Supported Elements (Volume m3)</td>
+           <td style="font-size: 10px;color: white"> <label  id="DirectSupportedElementsVolume" ></label> </td>
+        </tr>
+		 <tr>
+            <td style="font-size: 10px;color: white">Non Direct Dependent Elements (Volume m3)</td>
+           <td style="font-size: 10px;color: white"> <label  id="NonDirectDependentElementsVolume" ></label> </td>
+        </tr>
+		
+		
+		 <tr>
+            <td style="font-size: 10px;color: white">All Dependent Elements (Volume m3)</td>
+            <td style="font-size: 10px;color: white"> <label  id="AllDependentElementsVolume" ></label> </td>
+        </tr>
+	   
+    </table>
+</div>
+</body>
+</html>

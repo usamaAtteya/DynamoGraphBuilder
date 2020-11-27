@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept Map</title>
+<meta name="description" content="A concept map diagram implemented with labeled links and ForceDirectedLayout." />
+<!-- Copyright 1998-2017 by Northwoods Software Corporation. -->
+<meta charset="UTF-8">
+<script src="jquery-3.2.1.min.js"></script>
+<script src="go.js"></script>
+<script src="bpopup.js"></script>
+ <!-- this is only for the GoJS Samples framework -->
+<script id="code">
+var graphElmnts = JSON.parse('#graphElmnts') ;
+function onSelectionChanged(node) {
+
+var id = node.data.key;
+var graphElmnt = GetGraphElementById(id);
+$( "#Id" )[0].innerText = graphElmnt.Id;
+$( "#Category" )[0].innerText = graphElmnt.Category;
+$( "#IsStructural" )[0].innerText = graphElmnt.IsStructural;
+$( "#Volume" )[0].innerText = graphElmnt.Volume;
+$( "#DirectConnectedElements" )[0].innerText =  graphElmnt.DirectConnectedElementsIds.length;
+$( "#DirectConnectedStructuralElements" )[0].innerText =  graphElmnt.DirectConnectedStructuralElementsIds.length;
+$( "#DirectSupportedElements" )[0].innerText =  graphElmnt.DirectSupportedElementsIds.length;
+$( "#NonDirectDependentElements" )[0].innerText=  graphElmnt.NonDirectDependentElementsIds.length;
+$( "#AllDependentElements" )[0].innerText=  graphElmnt.AllDependentElementsIds.length;
+$( "#DirectConnectedElementsVolume" )[0].innerText = GetTotalGraphElementsVolume(graphElmnt.DirectConnectedElementsIds);
+$( "#DirectConnectedStructuralElementsVolume" )[0].innerText =  GetTotalGraphElementsVolume(graphElmnt.DirectConnectedStructuralElementsIds);
+$( "#DirectSupportedElementsVolume" )[0].innerText = GetTotalGraphElementsVolume(graphElmnt.DirectSupportedElementsIds);
+$( "#NonDirectDependentElementsVolume" )[0].innerText = GetTotalGraphElementsVolume(graphElmnt.NonDirectDependentElementsIds);
+$( "#AllDependentElementsVolume" )[0].innerText = GetTotalGraphElementsVolume(graphElmnt.AllDependentElementsIds);
+OpenPopup();
+    
+  }
+  function GetTotalGraphElementsVolume( ids)
+  {
+  var totVolume = 0 ;
+   for (j = 0; j < ids.length; j++) { 
+  totVolume = totVolume + parseFloat(GetGraphElementById(ids[j]).Volume);
+   }
+  
+  return totVolume;
+  }
+  function GetGraphElementById( id)
+  {
+  for (i = 0; i < graphElmnts.length; i++) { 
+    if(graphElmnts[i].Id == id)
+	return graphElmnts[i];
+}
+  }
+   function OpenPopup() {
+
+        addOrEditPopup = $('#GraphNodeDetails').bPopup({
+            escClose: true,
+            modalClose: true
+        });
+    }
+  function init() {
+    if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
+    var $ = go.GraphObject.make;  // for conciseness in defining templates
+    myDiagram =
+      $(go.Diagram, "myDiagramDiv",  // must name or refer to the DIV HTML element
+        {
+          initialAutoScale: go.Diagram.Uniform,  // an initial automatic zoom-to-fit
+          contentAlignment: go.Spot.Center,  // align document to the center of the viewport
+          layout:
+            $(go.ForceDirectedLayout,  // automatically spread nodes apart
+              { maxIterations: 200, defaultSpringLength: 30, defaultElectricalCharge: 100 })
+        });
+    // define each Node's appearance
+    myDiagram.nodeTemplate =
+      $(go.Node, "Auto",  // the whole node panel
+	  { selectionAdorned: false,  // don't bother with any selection adornment
+        selectionChanged: onSelectionChanged }, 
+        { locationSpot: go.Spot.Center },
+        // define the node's outer shape, which will surround the TextBlock
+        $(go.Shape, "Rectangle",
+          { fill: $(go.Brush, "Linear", { 0: "rgb(254, 201, 0)", 1: "rgb(254, 162, 0)" }), stroke: "black" }, new go.Binding("fill", "fill")),
+        $(go.TextBlock,
+          { font: "bold 10pt helvetica, bold arial, sans-serif", margin: 4 },
+          new go.Binding("text", "text"))
+      );
+    // replace the default Link template in the linkTemplateMap
+    myDiagram.linkTemplate =
+      $(go.Link,  // the whole link panel
+        $(go.Shape,  // the link shape
+          { stroke: "black" }),
+        $(go.Shape,  // the arrowhead
+          { toArrow: "standard", stroke: null }),
+        $(go.Panel, "Auto",
+          $(go.Shape,  // the label background, which becomes transparent around the edges
+            { fill: $(go.Brush, "Radial", { 0: "rgb(240, 240, 240)", 0.3: "rgb(240, 240, 240)", 1: "rgba(240, 240, 240, 0)" }),
+              stroke: null }),
+          $(go.TextBlock,  // the label text
+            { textAlign: "center",
+              font: "10pt helvetica, arial, sans-serif",
+              stroke: "#555555",
+              margin: 4 },
+            new go.Binding("text", "text"))
+        )
+      );
+    // create the model for the concept map
+    var nodeDataArray = [@GeneratedNodes];
+    var linkDataArray = [@GeneratedLinks];
+    myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+  }
+</script>
+</head>
+<body onload="init()">
+<div id="sample">
+  <div id="myDiagramDiv" style="background-color: whitesmoke; border: solid 1px black; width: 100%; height: 700px"></div>
+
+</div>
+<div id="GraphNodeDetails" style="display: none">
+   
+       <table>
+        <tr>
+            <td style="font-size: 10px;color: white">Id</td>
+            <td style="font-size: 10px;color: white"> <label  id="Id" ></label> </td>
+        </tr>
+        <tr>
+            <td style="font-size: 10px;color: white">Category</td>
+            <td style="font-size: 10px;color: white"> <label  id="Category" ></label> </td>
+        </tr>
+		  <tr>
+            <td style="font-size: 10px;color: white">Is Structural Element</td>
+            <td style="font-size: 10px;color: white"> <label  id="IsStructural" ></label> </td>
+        </tr>
+		 <tr>
+            <td style="font-size: 10px;color: white">Volume</td>
+            <td style="font-size: 10px;color: white"> <label  id="Volume" ></label> </td>
+        </tr>
+       
+	    <tr>
+            <td style="font-size: 10px;color: white">#Direct Connected Elements</td>
+            <td style="font-size: 10px;color: white"> <label  id="DirectConnectedElements" ></label> </td>
+        </tr>
+		
+		<tr>
+            <td style="font-size: 10px;color: white">#Direct Connected Structural Elements</td>
+            <td style="font-size: 10px;color: white"> <label  id="DirectConnectedStructuralElements" ></label> </td>
+        </tr>
+		
+		 <tr>
+            <td style="font-size: 10px;color: white">#Direct Supported Elements</td>
+            <td style="font-size: 10px;color: white"> <label  id="DirectSupportedElements" ></label> </td>
+        </tr>
+		 <tr>
+            <td style="font-size: 10px;color: white">#Non Direct Dependent Elements</td>
+            <td style="font-size: 10px;color: white"> <label  id="NonDirectDependentElements" ></label> </td>
+        </tr>
+		 <tr>
+            <td style="font-size: 10px;color: white">#All Dependent Elements</td>
+            <td style="font-size: 10px;color: white"> <label  id="AllDependentElements" ></label> </td>
+        </tr>
+	   
+	   	<tr>
+            <td style="font-size: 10px;color: white">Direct Connected Elements (Volume m3)</td>
+           <td style="font-size: 10px;color: white"> <label  id="DirectConnectedElementsVolume" ></label> </td>
+        </tr>
+			<tr>
+            <td style="font-size: 10px;color: white">#Direct Connected Structural Elements (volume m3)</td>
+            <td style="font-size: 10px;color: white"> <label  id="DirectConnectedStructuralElementsVolume" ></label> </td>
+        </tr>
+		 <tr>
+            <td style="font-size: 10px;color: white">Direct Supported Elements (Volume m3)</td>
+           <td style="font-size: 10px;color: white"> <label  id="DirectSupportedElementsVolume" ></label> </td>
+        </tr>
+		 <tr>
+            <td style="font-size: 10px;color: white">Non Direct Dependent Elements (Volume m3)</td>
+           <td style="font-size: 10px;color: white"> <label  id="NonDirectDependentElementsVolume" ></label> </td>
+        </tr>
+		
+		
+		 <tr>
+            <td style="font-size: 10px;color: white">All Dependent Elements (Volume m3)</td>
+            <td style="font-size: 10px;color: white"> <label  id="AllDependentElementsVolume" ></label> </td>
+        </tr>
+	   
+    </table>
+</div>
+</body>
+</html>
